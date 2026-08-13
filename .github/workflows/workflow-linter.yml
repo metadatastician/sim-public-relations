@@ -28,8 +28,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v7.0.1
-
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Check SPDX Headers
         run: |
           echo "=== Checking SPDX License Headers ==="
@@ -64,34 +63,28 @@ jobs:
           fi
           echo "All workflows have permissions declared"
 
-      # Bun is the estate's first-choice runtime (LANGUAGE-POLICY.adoc §1:
-      # Bun > Deno > pnpm > npm) and executes .ts directly (§1.2). Tag form
-      # matches every other ref in this repo and is resolved by actions.lock.
-      - name: Set up Bun
-        uses: oven-sh/setup-bun@v2.2.0
-        with:
-          bun-version: latest
-
       - name: Check SHA-Pinned Actions
         run: |
           echo "=== Checking Action Pinning ==="
           # Find any uses: lines that don't have @SHA format
           # Pattern: uses: owner/repo@<40-char-hex>
-          # Delegated to scripts/check-action-pinning.js. The rule it enforces is
-          # unchanged in spirit — every action ref must resolve to an immutable
-          # commit — but "pinned" now includes refs the workflow lockfile
-          # resolves, which is how this repo pins them. Kept as a script rather
-          # than inline because the inline form needs a heredoc inside a YAML
-          # block scalar, and that is a well-known way to ship a gate that
-          # silently does nothing.
-          if ! bun scripts/check-action-pinning.js; then
-            unpinned="see above"
-          else
-            unpinned=""
-          fi
+          # Scan ACTUAL workflow files only. A bare `-r` over the directory
+          # also reads:
+          #   * .github/workflows/actions.lock — the lockfile's own `uses:`
+          #     keys are not action refs, so they were reported as "unpinned"
+          #     and this gate could never pass once a lockfile existed;
+          #   * *.yml.template — a template for minted repos, whose tag ref is
+          #     deliberate and is resolved at mint time, not here.
+          # Both were false positives that made this linter permanently red.
+          unpinned=$(find .github/workflows -maxdepth 1 \
+              \( -name '*.yml' -o -name '*.yaml' \) -print0 2>/dev/null \
+            | xargs -0 -r grep -nE "^[[:space:]]+uses:" /dev/null | \
+            grep -v "@[a-f0-9]\{40\}" | \
+            grep -v "uses: \./\|uses: docker://\|uses: actions/github-script" || true)
 
           if [ -n "$unpinned" ]; then
             echo "ERROR: Found unpinned actions:"
+            echo "$unpinned"
             echo ""
             echo "Replace version tags with SHA pins, e.g.:"
             echo "  uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v6.0.1"

@@ -163,13 +163,8 @@ REQUIRED_WORKFLOWS=(
     "security-policy.yml"
     "wellknown-enforcement.yml"
     "workflow-linter.yml"
-    # npm-bun-blocker.yml and ts-blocker.yml were retired in #14 and replaced by
-    # runtime-policy.yml: the old gate failed any build carrying bun.lockb with
-    # "Use Deno instead", which blocked the estate's new first-choice runtime, so
-    # none of the 55 repos carrying it ever adopted Bun. This list was not
-    # updated, so it has required two files the template deliberately no longer
-    # ships — which is why validate-template.sh has been red since that merge.
-    "runtime-policy.yml"
+    "npm-bun-blocker.yml"
+    "ts-blocker.yml"
     "secret-scanner.yml"
 )
 
