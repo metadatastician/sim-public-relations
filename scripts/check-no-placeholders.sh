@@ -4,7 +4,7 @@
 #
 # check-no-placeholders.sh — no repo may ship an unfilled {{PLACEHOLDER}}.
 #
-# Estate rule (methodology.a2ml: reject-if-contains): a token that `just repo-init`
+# Estate rule (methodology.a2ml: reject-if-contains): a token that `just init`
 # did not fill is debt, and in .github/settings.yml or SECURITY.md it is a
 # defect with consequences — probot/settings applies settings.yml on every push,
 # and a security policy that cites a key nobody holds is worse than one that
@@ -84,33 +84,15 @@ if [ -f "$SETTINGS" ]; then
         echo "" >&2
         echo "probot/settings applies this file on every push to the default branch," >&2
         echo "so these keys are enforced, not described. Repository identity and" >&2
-        echo "visibility are set out of band at creation time — by \`just repo-init\` via" >&2
+        echo "visibility are set out of band at creation time — by \`just init\` via" >&2
         echo "\`gh\` for minted repos, and deliberately by the owner for the template." >&2
         exit 1
     fi
 fi
 
-# A template repo's placeholders ARE its product — they are what `just repo-init`
+# A template repo's placeholders ARE its product — they are what `just init`
 # consumes. Any other repo is an instantiation and is checked in full.
-#
-# Identity comes from the git remote, not the directory name.
-#
-# This used to be `basename "$(pwd)"`, which is right in CI — GITHUB_REPOSITORY
-# is set to `owner/rsr-template-repo` and matches — but wrong anywhere the
-# checkout is not literally named `*-template-repo`. A git worktree is the common
-# case: `git worktree add .claude/worktrees/defects` gives basename `defects`,
-# the exemption misses, and the gate reports every one of the template's ~85
-# deliberate placeholder files as a failure. A clone into `rsr-template-repo-2`,
-# or any renamed directory, does the same.
-#
-# The remote URL is the repo's actual identity and survives all of that. The
-# basename remains as the last fallback for a checkout with no remote.
-REPO_NAME="${GITHUB_REPOSITORY:-}"
-if [ -z "$REPO_NAME" ]; then
-    REPO_NAME="$(git -C "$REPO_ROOT" config --get remote.origin.url 2>/dev/null \
-                 | sed -E 's#(\.git)?/?$##; s#^.*[:/]([^/]+/[^/]+)$#\1#')"
-fi
-[ -z "$REPO_NAME" ] && REPO_NAME="$(cd "$REPO_ROOT" && basename "$(pwd)")"
+REPO_NAME="${GITHUB_REPOSITORY:-$(cd "$REPO_ROOT" && basename "$(pwd)")}"
 case "$REPO_NAME" in
     *-template-repo)
         echo "PASS: $REPO_NAME is a template repo — unfilled tokens are intentional"

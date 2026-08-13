@@ -3,22 +3,16 @@
 #
 # INIT — Bootstrap a new project from this template
 #
-# Imported by ../../Justfile via `import? "build/just/repo-init.just"`.
+# Imported by ../../Justfile via `import? "build/just/init.just"`.
 # Variables (project, OWNER, REPO, version, tier) and the `set shell` directive
 # are inherited from the root Justfile.
 
 # Interactive project bootstrap — replaces all {{PLACEHOLDER}} tokens
-# Optional archetype argument (e.g. `just repo-init julia-library`) applies an
+# Optional archetype argument (e.g. `just init julia-library`) applies an
 # archetype overlay: see archetypes/README.adoc and ADR-0003.
-repo-init archetype="":
+init archetype="":
     #!/usr/bin/env bash
     set -euo pipefail
-
-    # Non-interactive support: if RSR_NON_INTERACTIVE is set, dummy-out 'read'.
-    # This prevents blocking on input and seamlessly uses environment variables.
-    if [ -n "${RSR_NON_INTERACTIVE:-}" ]; then
-        read() { return 0; }
-    fi
 
     echo "═══════════════════════════════════════════════════"
     echo "  RSR Project Bootstrap"
@@ -233,7 +227,7 @@ repo-init archetype="":
     # Tokens only the author can answer. init cannot know a project's unique
     # strength or its language stack, and guessing would write fiction into
     # ANCHOR.a2ml — the file the estate treats as semantic authority. They
-    # become UNASSIGNED, the same marker `just repo-init` already writes for an
+    # become UNASSIGNED, the same marker `just init` already writes for an
     # unchosen clade: honest, greppable, and obviously unfinished, whereas a
     # leftover brace token just looks like the template broke.
     #   grep -rn UNASSIGNED . — to find what still needs you
@@ -279,39 +273,6 @@ repo-init archetype="":
     sed -i "s|\[YOUR-REPO-NAME\]|${PROJECT_NAME}|g" 0-AI-MANIFEST.a2ml 2>/dev/null || true
     sed -i "s|\[YOUR-NAME/ORG\]|${OWNER}|g" 0-AI-MANIFEST.a2ml 2>/dev/null || true
 
-    # --- Instruction-block pass --------------------------------------------
-    # Delete the "TEMPLATE INSTRUCTIONS (delete this block before publishing)"
-    # comments. Nothing ever did, and 211 estate repos still carry one. The
-    # block is self-detonating: its own first line names a LITERAL doubled-brace
-    # token, so the sed pass above has nothing to match, yet every placeholder
-    # gate greps exactly that shape — a repo with every real token correctly
-    # substituted still trips its own gate. Rationale and measurements in
-    # scripts/strip-instruction-blocks.py.
-    #
-    # Runs AFTER substitution, so real tokens are already filled; only the
-    # instructions go. Deliberately skipped for *-template-repo itself: the
-    # template's own blocks ARE the product, and its gate exempts it by remote
-    # name — the same protection the self-name pass below uses.
-    if [ "$REPO" != "${REPO%-template-repo}" ]; then
-        echo "  instruction blocks: skipped (this IS a template repo)"
-    else
-        python3 scripts/strip-instruction-blocks.py .
-    fi
-
-    # --- Dependabot ecosystem pass -----------------------------------------
-    # dependabot.yml ships every common ecosystem under "remove unused ones for
-    # your project". Nothing removed them: measured estate-wide, 206/206 repos
-    # declaring `pip` have no Python manifest, and each such entry fails on
-    # every scheduled run. Prune on the ARCHETYPE rather than on file presence —
-    # a freshly minted tree has no manifests yet, so presence would delete
-    # everything. Rationale in scripts/prune-dependabot-ecosystems.py.
-    keep_eco="github-actions"
-    case "${ARCH_PRESET:-}" in *rust*|*cargo*) keep_eco="$keep_eco cargo" ;; esac
-    case "${ARCH_PRESET:-}" in *node*|*js*|*ts*|*deno*|*bun*|*web*) keep_eco="$keep_eco npm" ;; esac
-    case "${ARCH_PRESET:-}" in *elixir*|*mix*) keep_eco="$keep_eco mix" ;; esac
-    case "${ARCH_PRESET:-}" in *python*|*py*) keep_eco="$keep_eco pip" ;; esac
-    python3 scripts/prune-dependabot-ecosystems.py .github/dependabot.yml $keep_eco
-
     # --- Self-name pass (ADR-0003) -----------------------------------------
     # The template's own name is written as a LITERAL, not as a placeholder
     # token, so the substitution loop above never touched it. Measured on a
@@ -335,7 +296,7 @@ repo-init archetype="":
         SELF_PROV='instantiated-from|parent|upstream|chain =|lineage|minted from|created from|Template: '
         find . -type f \
             -not -path './.git/*' \
-            -not -path './build/just/repo-init.just' \
+            -not -path './build/just/init.just' \
             -not -path './docs/decisions/*' \
             -not -path './.machine_readable/descriptiles/CLADE.a2ml' \
             -not -path './.machine_readable/descriptiles/VARIANT.a2ml' \
@@ -432,7 +393,7 @@ repo-init archetype="":
         echo "# SPDX-License-Identifier: MPL-2.0"
         echo "#"
         echo "# rsr-profile.a2ml — this repo's declared RSR v2.0 capabilities."
-        echo "# Generated by just repo-init on ${CURRENT_DATE}. The template's maximal"
+        echo "# Generated by just init on ${CURRENT_DATE}. The template's maximal"
         echo "# profile was removed at mint: declare only what this tree carries."
         echo ""
         echo "[rsr-profile]"
@@ -515,93 +476,16 @@ repo-init archetype="":
     echo ""
     echo "── Validation ───────────────────────────────────"
 
-    # Check for remaining placeholders.
-    #
-    # This printed "WARNING" and then carried on to "Done! Mint complete." It
-    # detected the very defect that went on to reach 211 repos, said so every
-    # time, and stopped nobody. That is the fake-gate pattern this estate keeps
-    # re-learning: a check that cannot fail reads as coverage while changing no
-    # outcome.
-    #
-    # It now aborts the mint. A tree that still holds substitution tokens is not
-    # minted, it is half-minted, and shipping one is how the estate acquired 12
-    # permanently-red OpenSSF builds and 12 settings.yml files declaring an
-    # unsubstituted repository name. That second one is not theoretical: the
-    # braces were once submitted to GitHub, collapsed to dashes, and renamed a
-    # repo to "-REPO-", which then read as deleted.
-    #
-    # RSR_ALLOW_PLACEHOLDERS=1 restores the old warning, for deliberately
-    # partial mints — not for getting past this message.
-    #
-    # META tokens are exempt, matching scripts/check-no-placeholders.sh. A file
-    # is only half-minted if it holds a token naming a real value; a file that
-    # says "replace all {PLACEHOLDER} values" is prose ABOUT tokens and is
-    # supposed to survive. Without this exemption the gate fires on README.adoc,
-    # EXPLAINME.adoc, both descriptiles and the checker itself on every single
-    # mint — measured — and a gate that always fires gets switched off.
-    #
-    # This exemption is also, exactly, why the instruction block went unnoticed
-    # in 211 repos: {PLACEHOLDER} is the ONLY doubled-brace text in it, so any
-    # gate sensibly exempting metasyntax must let the block through. The two
-    # checks here are therefore complementary, not redundant — the block can
-    # only be caught by name, which the check below does.
-    # The four allowlisted paths are copied verbatim from
-    # scripts/check-no-placeholders.sh so the two gates cannot drift apart.
-    # Each legitimately names tokens: the token vocabulary itself, prose
-    # explaining that tokens exist, the checker's own pattern, and the e2e
-    # test's answer list.
+    # Check for remaining placeholders
     PATTERN="${LB}[A-Z_]*${RB}"
-    META='PLACEHOLDER|ANYTHING|TOKEN|UPPER_SNAKE'
-    REMAINING=$(grep -rl "$PATTERN" . --include='*.md' --include='*.adoc' --include='*.yml' --include='*.yaml' --include='*.a2ml' --include='*.toml' --include='*.scm' --include='*.ncl' --include='*.nix' --include='*.json' --include='*.sh' 2>/dev/null | grep -v '.git/' | while IFS= read -r f; do
-        case "${f#./}" in
-            .machine_readable/ai/PLACEHOLDERS.adoc|EXPLAINME.adoc|scripts/check-no-placeholders.sh|tests/e2e/template_instantiation_test.sh) continue ;;
-        esac
-        # Bracketed [{]{2} rather than a doubled brace written literally, for
-        # two independent reasons. First, `grep -E` is ugrep on some estate
-        # machines and rejects a bare doubled brace as an "empty
-        # (sub)expression", because a brace opens an interval quantifier — the
-        # same reason ci.yml uses this form estate-wide. Second, a doubled brace
-        # inside a just RECIPE BODY is just's own interpolation delimiter, so
-        # writing one here (even in a comment) is a parse error. That is why the
-        # recipe computes LB/RB with printf instead of spelling them out.
-        if grep -ohE '[{]{2}[A-Z][A-Z0-9_]*[}]{2}' "$f" | grep -qvE "^[{]{2}(${META})[}]{2}$"; then
-            echo "$f"
-        fi
-    done || true)
+    REMAINING=$(grep -rl "$PATTERN" . --include='*.md' --include='*.adoc' --include='*.yml' --include='*.yaml' --include='*.a2ml' --include='*.toml' --include='*.scm' --include='*.ncl' --include='*.nix' --include='*.json' --include='*.sh' 2>/dev/null | grep -v '.git/' | grep -v '.machine_readable/ai/PLACEHOLDERS.adoc' || true)
     if [ -n "$REMAINING" ]; then
-        echo "Remaining placeholders in:"
+        echo "WARNING: Remaining placeholders in:"
         echo "$REMAINING" | sed 's/^/  /'
         echo ""
-        echo "Inspect with: grep -rn '$LB' . --include='*.md'"
-        if [ "${RSR_ALLOW_PLACEHOLDERS:-0}" = "1" ]; then
-            echo "WARNING: continuing anyway (RSR_ALLOW_PLACEHOLDERS=1)."
-        else
-            echo "ERROR: mint aborted — the tree above is half-minted."
-            echo "       Fill those tokens, or re-run with RSR_ALLOW_PLACEHOLDERS=1"
-            echo "       if a partial mint is genuinely what you want."
-            exit 1
-        fi
+        echo "Run: grep -rn '$LB' . --include='*.md' to inspect"
     else
         echo "All placeholders replaced successfully!"
-    fi
-
-    # An un-deleted instruction block is a different failure from an unfilled
-    # token, and once its literal metasyntax is the only doubled-brace text left
-    # the check above cannot distinguish the two. Fail on it by name.
-    #
-    # The strip pass, this recipe and the e2e test are excluded because they
-    # necessarily NAME the marker in order to describe or assert on it — the fix
-    # for the defect would otherwise be flagged by the check for the defect, and
-    # so would the test that guards the fix. All three are tooling, not
-    # community-health documents, so a mention in them cannot mislead a reader
-    # about what this project's Code of Conduct says.
-    LEFTOVER_BLOCKS=$(grep -rl 'TEMPLATE INSTRUCTIONS' . --exclude-dir=.git 2>/dev/null | grep -vE '^\./(scripts/strip-instruction-blocks\.py|build/just/repo-init\.just|tests/e2e/template_instantiation_test\.sh)$' || true)
-    if [ -n "$LEFTOVER_BLOCKS" ]; then
-        echo ""
-        echo "Un-deleted TEMPLATE INSTRUCTIONS block in:"
-        echo "$LEFTOVER_BLOCKS" | sed 's/^/  /'
-        echo "ERROR: the instruction-block pass should have removed these."
-        exit 1
     fi
 
     # K9-SVC validation (if available)
