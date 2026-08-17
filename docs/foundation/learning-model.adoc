@@ -1,0 +1,61 @@
+// SPDX-License-Identifier: CC-BY-SA-4.0
+= Learning Model
+:toc: left
+
+== Construct
+
+The assessed construct is defensible communications practice under ambiguity,
+time pressure and organisational constraint. The record preserves what the
+learner could reasonably know when acting, rather than judging only with
+hindsight.
+
+== Experience is repeated situated performance
+
+The simulator does not claim that reading guidance or producing a pristine
+press release equals experience. A learner encounters partial briefs, waiting
+times, dependencies, corrections, conflicting preferences, ethical pressure,
+unresponsive colleagues and stakeholder reaction. They must perform, observe
+the consequence, receive debrief, retry and later transfer the capability to a
+different context.
+
+== Deliberate-practice cycle
+
+. Orient: identify purpose, role, authority, deadlines and missing context.
+. Investigate: gather and test relevant evidence without exhaustive research.
+. Frame: distinguish facts, interpretations, assumptions and uncertainties.
+. Plan: connect organisational purpose to audiences, objectives, strategy,
+  activities and measures.
+. Produce and coordinate: create fit-for-purpose artefacts, seek approval and
+  maintain version and decision records.
+. Relate: listen and respond to colleagues, clients, journalists and affected
+  stakeholders without treating people as distribution channels.
+. Monitor and adapt: interpret outputs, out-takes, outcomes and risk signals;
+  change course when warranted.
+. Reflect and transfer: explain the decision, recognise limitations and state
+  how the approach changes in another situation.
+
+== Feedback timing
+
+`guided-practice` may offer prompts, examples and reversible rehearsal.
+`assessment` provides process and accessibility affordances but no correctness
+feedback before final submission. `mentor-review` permits a human to annotate
+events and artefacts without rewriting the historical record.
+
+== Route plurality
+
+Rubrics describe competent standard routes, competent alternatives, minimally
+acceptable work, common errors and critical errors. They never encode one
+secret sequence, tone or vocabulary. A route is judged against the evidence,
+authority and deadline at the time.
+
+== AI contrast runs
+
+Where useful, the same bounded task can be performed in three conditions:
+
+* unaided, to reveal the learner's baseline reasoning and craft;
+* AI-assisted, to observe instruction, selection, verification and improvement;
+* AI-review, to test whether the learner can find planted defects in plausible
+  automated output.
+
+Tool speed and prose fluency are not competencies by themselves. Assessment
+focuses on the quality and accountability of the professional act.

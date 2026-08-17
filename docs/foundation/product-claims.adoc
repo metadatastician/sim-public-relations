@@ -1,0 +1,34 @@
+// SPDX-License-Identifier: CC-BY-SA-4.0
+= Product Claims
+:toc: left
+
+== Permitted claims
+
+* Fictional, source-attributed professional-learning simulator.
+* Local-first practice in realistic public-relations and communications tasks.
+* Evidence-linked observations of behaviour within a named scenario version.
+* Watermarked portfolio of simulated work, decisions and reflection.
+* Provisional professional-reference pack with an explicit review state and
+  access date.
+
+== Prohibited claims
+
+The project and its outputs must not claim employment, client service,
+placement or internship hours, supervised professional experience, guaranteed
+competence, job readiness, guaranteed employment, professional membership,
+qualification, accreditation or CPD unless a named competent external body
+separately grants the relevant status.
+
+No output may imply that a fictional stakeholder endorsed the learner or that
+an automated score is an employer's hiring decision.
+
+== Required export wording
+
+Every portfolio document carries:
+
+----
+FICTIONAL SIMULATION — NOT LIVE CLIENT WORK OR EMPLOYMENT EXPERIENCE
+----
+
+The export identifies scenario, version, support level, AI condition, retries,
+assessment status and review provenance.

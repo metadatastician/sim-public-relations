@@ -1,108 +1,145 @@
 // SPDX-License-Identifier: CC-BY-SA-4.0
-// Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
-// SPDX-FileCopyrightText: 2024-2026 Jonathan D.A. Jewell (hyperpolymath)
-= {{PROJECT_NAME}}
-:toc:
-:toc-placement: preamble
+// SPDX-FileCopyrightText: 2026 Jonathan D.A. Jewell (hyperpolymath)
+= PR Practice Lab
+:toc: left
+:reproducible:
 
-// ── Licensing ───────────────────────────────────────────────────────────────
-image:https://img.shields.io/badge/Code-MPL--2.0-blue.svg?logo=mozilla[Code licence: MPL-2.0,link="https://opensource.org/licenses/MPL-2.0"]
-image:https://img.shields.io/badge/Docs-CC--BY--SA--4.0-blue.svg?logo=creativecommons[Docs licence: CC-BY-SA-4.0,link="https://creativecommons.org/licenses/by-sa/4.0/"]
-image:https://img.shields.io/badge/Provenance-Quantum--Safe-blueviolet[Quantum-Safe Provenance,link="docs/legal/EXHIBIT-B-QUANTUM-SAFE.txt"]
-
-// ── Standard & quality gates ────────────────────────────────────────────────
-image:https://img.shields.io/badge/RSR-Rhodium_Standard-9C27B0[Rhodium Standard Repository,link="https://github.com/hyperpolymath/rhodium-standard-repositories"]
-image:https://www.bestpractices.dev/projects/{{OPENSSF_BP_ID}}/badge[OpenSSF Best Practices,link="https://www.bestpractices.dev/projects/{{OPENSSF_BP_ID}}"]
-image:https://api.scorecard.dev/projects/github.com/{{OWNER}}/{{REPO}}/badge[OpenSSF Scorecard,link="https://scorecard.dev/viewer/?uri=github.com/{{OWNER}}/{{REPO}}"]
-image:https://sonarcloud.io/api/project_badges/measure?project={{OWNER}}_{{REPO}}&metric=alert_status[SonarQube Quality Gate,link="https://sonarcloud.io/summary/new_code?id={{OWNER}}_{{REPO}}"]
-image:https://archive.softwareheritage.org/badge/origin/https://{{FORGE}}/{{OWNER}}/{{REPO}}/[Archived in Software Heritage,link="https://archive.softwareheritage.org/browse/origin/?origin_url=https://{{FORGE}}/{{OWNER}}/{{REPO}}"]
-
-// ── Provenance & ecosystem ──────────────────────────────────────────────────
-image:https://img.shields.io/badge/Idris-Inside-5E5086?logo=idris&logoColor=white[Idris Inside,link="https://github.com/hyperpolymath/proven"]
-image:https://img.shields.io/badge/Zig-Zero--overhead-F7A41D?logo=zig&logoColor=black[Zig Zero-overhead FFI,link="https://github.com/hyperpolymath/typed-wasm"]
-image:https://api.thegreenwebfoundation.org/greencheckimage/{{FORGE}}[Green Web,link="https://www.thegreenwebfoundation.org/green-web-check/?url={{FORGE}}"]
-
-{{PROJECT_DESCRIPTION}}
+[.lead]
+An evidence-driven, time-aware public-relations and communications practice
+simulator for people who cannot get their first industry role because they do
+not yet have the experience that first roles ask them to demonstrate.
 
 [IMPORTANT]
 ====
-*This file is a template.* You are reading `README.adoc` from the *RSR template repo*
-(or a freshly-cloned copy of it). Run `just repo-init` to replace every `{{PLACEHOLDER}}`
-token with your project's details, then delete this admonition. Until you do, the
-`{{...}}` markers below are intentional placeholders, not content.
+PR Practice Lab is fictional professional-learning software. It is not an
+agency, an employer, a live client service, supervised employment, a placement,
+a professional qualification, a guarantee of competence or employment, or
+accredited CPD unless a competent external body separately approves it.
 ====
 
-== What this is
+== The problem it exists to solve
 
-A new repository scaffolded from the *Rhodium Standard Repository (RSR)* template:
-a batteries-included starting point that ships with CI/CD, machine-readable project
-metadata, an AI-agent gatekeeper protocol, a formally-typed ABI/FFI seam
-(Idris2 + Zig), container and reproducible-build scaffolding, and governance
-infrastructure — all wired and passing the RSR validators on day one.
+Entry-level applicants are often asked for evidence of work they can only obtain
+after somebody hires them. At the same time, AI is reducing the amount of
+low-risk production work through which new practitioners traditionally learned:
+first drafts, monitoring summaries, media-list maintenance, transcription,
+content variants and routine reporting.
 
-Replace this section with a description of *your* project once initialised.
+The answer cannot be a faster copy generator. PR Practice Lab creates a safe,
+repeatable place to perform the work around the copy: interrogate an incomplete
+brief, research and prioritise stakeholders, define measurable objectives,
+choose channels, handle approvals, verify claims, disclose and check AI use,
+respond to changing circumstances, advise against unethical requests, and
+explain decisions afterwards.
 
-== Quick start
+The product's core claim is deliberately narrow: a learner can produce
+traceable evidence of performance in realistic fictional situations. An
+employer, mentor, educator or professional body must decide what weight to give
+that evidence.
 
-[source,bash]
+== How it works
+
+Each authored scenario has a hidden, immutable reality and a learner-visible
+record that begins incomplete. The learner works through an inbox and bounded
+time/resource budget, asks for information, records assumptions and uncertainty,
+creates and revises communication artefacts, seeks approval, communicates with
+fictional stakeholders, monitors response and adapts the plan.
+
+The assessed unit is a defensible professional act:
+
 ----
-# 1. Create a repo from this template (or clone it), then from the repo root:
-just repo-init                # interactive bootstrap: fills every {{PLACEHOLDER}}
-
-# 2. See the available tasks:
-just                     # lists all phases (build, test, validate, audit, ...)
-
-# 3. Check the repo still satisfies the RSR shape:
-just validate            # structure + metadata checks
+available evidence -> stated interpretation and uncertainty -> objective
+-> audience and option choice -> authorised action -> response and consequence
+-> adaptation -> reflection
 ----
 
-`just repo-init` prompts for the project name, owner, author, licence contact, and the
-other values listed in `.machine_readable/ai/PLACEHOLDERS.adoc`, substitutes them
-across the tree, validates the result, and (if available) runs the `k9-svc` checks.
+The event record allows feedback to cite what the learner knew at the time. A
+good process can be recognised even when a fictional campaign meets adverse
+conditions; a lucky outcome cannot conceal fabrication, undisclosed interests,
+misleading measurement or reckless publication.
 
-== What you get
+== Phase A design
 
-* *Machine-readable metadata* (`.machine_readable/descriptiles/`) — `STATE`, `META`,
-  `ECOSYSTEM`, `PLAYBOOK`, `AGENTIC`, `NEUROSYM`, `CLADE`, and `anchors/ANCHOR`,
-  in a2ml, so tools and agents can read the project's state and boundaries.
-* *AI gatekeeper protocol* — `0-AI-MANIFEST.a2ml` is the universal entry point that
-  tells an AI agent how to work in this repo before it touches anything.
-* *Typed ABI/FFI seam* — `src/interface/Abi/` (Idris2 type + layout proofs) over
-  `src/interface/ffi/` (Zig implementation), with generated C headers.
-* *CI/CD* — GitHub Actions for quality, security (CodeQL, Scorecard, secret
-  scanning), multi-forge mirroring, and RSR anti-pattern enforcement.
-* *Supply-chain & reproducibility* — container layering (stapeln), Guix shells,
-  SBOM, and signing hooks.
-* *Governance* — `GOVERNANCE.adoc`, `MAINTAINERS.adoc`, `.github/` community health
-  files, and a release `AUDIT.adoc` gate.
+The first authored scenario is `northstar-mobility-001`: a junior practitioner
+joins a small agency team preparing the public launch of a fictional accessible
+community-transport pilot. The learner begins with realistic assistant work—
+brief hygiene, research, monitoring, stakeholder and media records, drafting,
+version control and approvals—then encounters conflicting executive claims,
+an accessibility challenge, a journalist enquiry and a changing launch
+decision.
 
-== Repository map
+Several defensible routes exist. The scenario does not reward one secret phrase
+or click sequence. It assesses research, planning, audience judgement, writing
+and editorial control, relationship handling, delivery, measurement, ethics,
+AI accountability, collaboration and reflective practice.
 
-[cols="1,3"]
-|===
-| Path | What lives there
+See:
 
-| `0-AI-MANIFEST.a2ml`      | Universal entry point for AI agents (read first).
-| `.machine_readable/`      | Project metadata, policies, contractiles, AI configs.
-| `src/interface/`          | Typed ABI (Idris2) + FFI (Zig) + generated headers.
-| `docs/`                   | Onboarding, status, governance, practice, decisions.
-| `build/`, `Justfile`      | Task orchestration (`just` phases delegate to `build/just/*.just`).
-| `.github/`                | Workflows + community health files.
-| `tests/`, `benches/`      | Test suites and benchmarks.
-|===
+* `docs/foundation/foundation-spec-v0.1.adoc` — product contract and invariants.
+* `docs/foundation/experience-progression.adoc` — the route from novice tasks to
+  integrated judgement.
+* `docs/assessment/competency-framework.adoc` — observable capabilities.
+* `docs/scenarios/northstar-mobility-design.adoc` — first scenario design.
+* `docs/rules/authority-registry.adoc` — first-party professional references and
+  their review status.
 
-== Where to go next
+== AI is part of the situation, not the assessor
 
-* `EXPLAINME.adoc` — the engineering deep-dive: how the pieces actually work.
-* `AFFIRMATION.adoc` — the dated, signed honesty snapshot of the repo's true state.
-* `AUDIT.adoc` — the release audit gate.
-* `.machine_readable/ai/PLACEHOLDERS.adoc` — the full placeholder reference.
+Scenarios may permit, require or prohibit particular AI assistance. Permitted
+use must be declared, source material and personal data must stay within the
+scenario policy, and the learner remains accountable for verification,
+editorial judgement and publication. The same task can be run with and without
+AI to reveal whether the learner can direct, check and improve automated work.
+
+No external AI service is required for the reference product. Hidden scenario
+reality and authoritative assessment must never be sent to a learner-controlled
+model.
+
+== Evidence passport
+
+A completed run can export a watermarked evidence pack containing:
+
+* the fictional brief and disclosed source set;
+* selected artefacts with revision and approval history;
+* the learner's decision log, assumptions, uncertainties and escalations;
+* a timeline of fictional stakeholder responses and adaptations;
+* rubric observations linked to events rather than unsupported scores; and
+* the learner's reflection on what they would repeat, change or escalate.
+
+The pack records `simulated practice`; it must never relabel elapsed simulation
+time as employment, placement hours, client work or accredited experience.
+
+== Current status
+
+The repository now contains the Phase A product foundation, competency and
+assessment model, authority registry, system architecture, first authored
+scenario, deterministic native kernel/CLI and scenario-boundary validation.
+The CLI is an executable replay and assessment slice, not yet an interactive
+learner interface. The authority pack and all scored interpretations remain
+`PROVISIONAL/UNREVIEWED` pending practitioner,
+educator, accessibility and early-career validation.
+
+Run the executable repository checks with:
+
+[source,sh]
+----
+zig build test
+zig build run -- golden
+bash tools/validate-scenario.sh
+bash tools/test-scenario-boundary.sh
+----
+
+== Design lineage
+
+The epistemic and assessment structure is adapted from the evidence-driven
+model in `metadatastician/sim-insolvency` (now presented as Insolvency Tycoon):
+immutable authored reality, monotonic disclosure, beliefs distinct from facts,
+append-only events, plural defensible routes, separate competency and outcome,
+and a post-submission reveal. The professional content and progression model in
+this repository are original to public relations and communications practice.
 
 == Licence
 
-Code, configuration and scripts are link:LICENSE[Mozilla Public License 2.0]
-(`MPL-2.0`); prose documentation is `CC-BY-SA-4.0`. Both texts live in
-`LICENSES/`, and per-file `SPDX-License-Identifier` headers are authoritative.
-The GitHub-detected licence is MPL-2.0 (the root `LICENSE`). Long-term
-attribution uses Quantum-Safe Provenance — see
-link:docs/legal/EXHIBIT-B-QUANTUM-SAFE.txt[the Quantum-Safe Provenance exhibit].
+Code, configuration and scripts are MPL-2.0. Documentation and fictional
+scenario materials are CC-BY-SA-4.0. Per-file SPDX declarations are
+authoritative.

@@ -1,0 +1,76 @@
+// SPDX-License-Identifier: CC-BY-SA-4.0
+= Communications Practice Ontology v0.1
+:toc: left
+
+== Common envelope
+
+Every significant object has a stable namespaced identifier, type, creation
+provenance, schema version, visibility and lifecycle state. Identifiers do not
+encode hidden conclusions.
+
+[cols="2,4",options="header"]
+|===
+|Family |Objects and lifecycle
+
+|People and organisations
+|`Actor`, `Organisation`, `Team`, `Role`, `Representation`, `Interest`:
+authored -> active -> changed/withdrawn/closed.
+
+|Brief and planning
+|`Brief`, `Requirement`, `Constraint`, `Objective`, `Baseline`, `Audience`,
+`Stakeholder`, `Public`, `Insight`, `Strategy`, `Activity`, `Channel`, `Measure`:
+proposed -> clarified -> approved/rejected -> superseded/evaluated.
+
+|Epistemic
+|`Fact`, `Source`, `EvidenceItem`, `Disclosure`, `Interpretation`, `Assumption`,
+`Uncertainty`, `Claim`, `Risk`: potential -> disclosed -> assessed/corrected/
+superseded/resolved; never silently erased.
+
+|Content and interaction
+|`Message`, `Artefact`, `Revision`, `Approval`, `Contact`, `Pitch`, `Enquiry`,
+`Response`, `Commitment`: drafted/proposed -> reviewed -> approved/rejected ->
+issued/received -> corrected/closed.
+
+|Monitoring and evaluation
+|`Mention`, `Output`, `Outtake`, `Outcome`, `Impact`, `Metric`, `Evaluation`:
+captured -> verified/classified -> interpreted -> reported/corrected.
+
+|Normative and operational
+|`Authority`, `RulePack`, `Rule`, `Obligation`, `Permission`, `Prohibition`,
+`Deadline`, `Workstream`, `Decision`, `Reason`, `Consequence`.
+
+|AI and data
+|`AIUse`, `System`, `InstructionRecord`, `DataDisclosure`, `Verification`,
+`HumanIntervention`: proposed -> permitted/rejected -> executed -> reviewed.
+
+|Assessment
+|`Competency`, `Observation`, `Assessment`, `Result`, `Reflection`,
+`EvidencePassport`: configured -> observed -> submitted -> reviewed -> exported/
+invalidated.
+|===
+
+== Critical distinctions
+
+An organisation objective is not a communication objective. An activity is not
+an outcome. A media contact is not a relationship. A stakeholder is not merely
+a target audience. A source statement is not an established fact. An approved
+message is not necessarily true. Sentiment is not public support. AI output is
+not evidence. Reach is not impact.
+
+== Relationships
+
+Evidence has source and provenance; disclosure points to evidence;
+interpretations and claims cite disclosures; uncertainty qualifies them;
+objectives connect to audiences and measures; activities connect to objectives
+through reasons; artefact revisions cite sources, messages and approvals;
+responses cite issued interactions; evaluation cites verified observations;
+decisions cite options, risk and dissent; competency observations cite events
+and artefact versions; an evidence passport binds selected material to the
+event-record digest.
+
+== Serialisation
+
+Neutral manifests use bounded UTF-8 fields, explicit visibility, schema
+versions, decimal logical time and lowercase hexadecimal digests. Unknown
+required fields or incompatible versions fail. Unknown optional extensions are
+preserved for lossless forwarding.

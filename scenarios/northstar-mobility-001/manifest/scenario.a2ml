@@ -1,0 +1,33 @@
+# SPDX-License-Identifier: CC-BY-SA-4.0
+[scenario]
+id = "northstar-mobility-001"
+title = "Northstar Mobility Pilot Launch"
+version = "0.1.0"
+jurisdiction = "united-kingdom-provisional"
+domain = "public-relations-and-communications"
+context = "small-agency"
+modes = ["guided-practice", "assessment", "ai-review"]
+reference-cut-off = "2026-08-17"
+rule-pack = "uk-pr-practice-provisional@0.1.0"
+reality-profile = "trusted-host-only"
+learner-bundle = "public.a2ml"
+watermark = "FICTIONAL SIMULATION — NOT LIVE CLIENT WORK OR EMPLOYMENT EXPERIENCE"
+
+[claims]
+employment-experience = false
+live-client-work = false
+professional-qualification = false
+guaranteed-competence = false
+guaranteed-employment = false
+accredited-cpd = false
+
+[determinism]
+seed-source = "session-record"
+clock = "logical-minutes"
+event-order = "accepted-command-order"
+
+[ai-policy]
+default = "permitted-with-declaration-and-verification"
+personal-contact-data = "prohibited"
+hidden-scenario-material = "prohibited"
+human-accountability = "required"

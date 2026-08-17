@@ -1,0 +1,70 @@
+// SPDX-License-Identifier: CC-BY-SA-4.0
+= Experience Progression
+:toc: left
+
+== Purpose
+
+This progression breaks the hiring paradox into observable practice without
+pretending a simulation is employment. Learners accumulate evidence across
+varied scenarios and decreasing support.
+
+[cols="1,2,3,3",options="header"]
+|===
+|Stage |Environment |Typical work |Evidence of readiness
+
+|Observe and repair
+|Worked examples; planted defects; generous time.
+|Check claims, clean contact data, repair a brief, improve accessibility,
+identify misleading metrics and find approval/version errors.
+|Explains the defect, risk and correction rather than merely matching a model.
+
+|Supported production
+|Clear bounded tasks; checklists; mentor prompts.
+|Research notes, monitoring summaries, media/stakeholder records, first drafts,
+channel variants, proofing and asset/version control.
+|Accurate, sourced, audience-fit work; declares uncertainty and AI use.
+
+|Coordinated delivery
+|Concurrent tasks; incomplete brief; dependencies and deadlines.
+|Clarify scope, schedule work, request inputs, manage approval, maintain status,
+handle a routine enquiry and report outputs.
+|Prioritises, communicates blockers and leaves a usable audit trail.
+
+|Bounded recommendation
+|Competing options; limited budget; ethical and reputational risk.
+|Audience and issue analysis, measurable objectives, channel and message
+options, risk treatment, measurement plan and escalation.
+|Recommendation follows evidence; alternatives and limitations are explicit.
+
+|Integrated response
+|Changing facts and stakeholder reaction; sparse support.
+|Reframe, pause or redirect activity; correct the record; advise leaders;
+coordinate responses; evaluate and reflect.
+|Maintains accuracy, relationships and accountability while adapting quickly.
+|===
+
+== Breadth requirements
+
+Progression requires evidence across contexts, not repeated mastery of one
+launch template. A credible passport samples agency and in-house dynamics,
+proactive and reactive work, internal and external audiences, routine and
+high-risk tasks, owned/earned/shared/paid choices, measurement and an ethical
+challenge. Each claimed capability needs more than one observation and at least
+one transfer task with reduced scaffolding.
+
+== Human review
+
+Automated observations may point to event evidence and deterministic defects.
+Claims about nuance, relationship quality, strategic judgement or professional
+readiness require calibrated human review. Reviewers see the scenario version,
+support level, retries, AI condition and accommodation mode.
+
+== Employer-facing language
+
+Permitted: `completed a fictional agency simulation`, `produced the attached
+artefact under the recorded scenario constraints`, `received the following
+evidence-linked observations`.
+
+Prohibited: `worked for Northstar`, `managed a live launch`, `served a client`,
+`has six months' experience`, or any claim of employment, accreditation or
+professional status not separately earned.

@@ -1,0 +1,79 @@
+// SPDX-License-Identifier: CC-BY-SA-4.0
+= System Architecture
+:toc: left
+
+[source,text]
+----
+                     +---------------------------+
+                     | trusted scenario host     |
+                     | reality + response rules  |
+                     | assessment interpretations|
+                     +-------------+-------------+
+                                   |
+                          validated commands
+                                   |
++---------------+      +-----------v-----------+      +----------------+
+| learner shell |<---->| event/command kernel  |<---->| local store    |
+| inbox/workbench|     | time + authority      |      | portable runs  |
++-------+-------+      +-----------+-----------+      +----------------+
+        |                          |
+        |                   append-only events
+        |                          |
+        |              +-----------v-----------+
+        +------------->| visible projections   |
+                       | brief/inbox/artefacts  |
+                       | beliefs/plan/measures  |
+                       +-----------+-----------+
+                                   |
+                            final submission
+                                   |
+                     +-------------v-------------+
+                     | debrief + evidence passport|
+                     +----------------------------+
+----
+
+== Trust boundaries
+
+The learner shell receives only disclosed evidence and derived learner-visible
+state. It never receives scenario reality, scheduled-response rules, rubric
+interpretations or model routes. Commands are attempts; the trusted kernel
+checks role, deadline, resource, approval, evidence and scenario preconditions
+before appending events.
+
+An external AI tool, when enabled, is an untrusted learner-side processor. It
+may receive only task-approved learner-visible material. Prompts and responses
+are not authoritative facts and cannot directly append events, approve content
+or inspect assessment keys.
+
+== Five epistemic layers
+
+. `authored reality`: immutable fictional history and scheduled conditions.
+. `potential evidence`: material that exists but may never be requested.
+. `disclosed record`: exactly what the learner could access at logical time.
+. `learner model`: interpretations, assumptions, uncertainties, plans and work.
+. `normative model`: effective provisional rules, approvals and assessment.
+
+Conflating these layers would create hindsight scoring, hidden-answer leakage or
+the false impression that an approved organisational message is an established
+fact.
+
+== Determinism
+
+The same scenario version, seed and accepted command sequence produces the same
+disclosures, fictional responses and consequences. Text quality review may be
+human or model-assisted, but deterministic structural observations remain
+replayable and human review provenance is recorded separately.
+
+== Portfolio export
+
+The export is a projection, not a rewritten run. Selected artefacts retain
+revision identities; observations cite events; omitted adverse evidence is
+declared; and every page carries the simulated-practice watermark. Private
+scenario keys and model routes are never included.
+
+== Local-first baseline
+
+The reference implementation stores runs locally, requires no telemetry, live
+media data, live stakeholder contact or external AI, and permits pseudonymous
+learners. Collaboration and hosted review are explicit extensions through the
+same command boundary.

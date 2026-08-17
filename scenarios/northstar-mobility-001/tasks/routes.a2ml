@@ -1,0 +1,19 @@
+# SPDX-License-Identifier: CC-BY-SA-4.0
+[[route]]
+id = "proceed-with-corrections"
+class = "potentially-defensible"
+questions = ["material-claims", "required-approvals", "accessible-core", "residual-risk"]
+
+[[route]]
+id = "stage-the-launch"
+class = "potentially-defensible"
+questions = ["safe-preparation", "earned-outreach-hold", "dependency-owner", "revised-time"]
+
+[[route]]
+id = "pause-and-replan"
+class = "potentially-defensible"
+questions = ["material-unresolved-risk", "stakeholder-listening", "client-counsel", "recovery-plan"]
+
+[selection]
+one-correct-route = false
+required-record = ["evidence", "uncertainty", "alternatives", "reason", "approval", "next-review"]

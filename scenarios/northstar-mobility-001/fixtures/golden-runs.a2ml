@@ -1,0 +1,14 @@
+# SPDX-License-Identifier: CC-BY-SA-4.0
+runs = [
+  "corrected-launch-standard",
+  "staged-launch-standard",
+  "pause-and-replan-alternative",
+  "narrow-owned-launch-alternative",
+  "threshold-with-supported-escalation",
+  "output-volume-no-outcome",
+  "late-approval",
+  "blanket-pitch",
+  "invented-endorsement",
+  "knowingly-false-claim",
+  "contact-data-to-ai",
+]

@@ -1,0 +1,86 @@
+// SPDX-License-Identifier: CC-BY-SA-4.0
+= Competency Framework
+:toc: left
+
+[cols="2,4",options="header"]
+|===
+|Competency |Observable evidence
+
+|Role, brief and authority
+|Clarifies purpose, scope, decision rights, deadlines, deliverables, constraints
+and approval; records what remains unclear.
+
+|Research and listening
+|Uses proportionate sources, monitoring and direct evidence; distinguishes
+signal from noise; records provenance and limitations.
+
+|Source and claim evaluation
+|Separates fact, interpretation, allegation, estimate and approved claim;
+triangulates material assertions and corrects the record.
+
+|Organisational understanding
+|Connects communications work to organisational purpose, operating reality,
+risk and the limits of what communication can achieve.
+
+|Stakeholders, publics and audiences
+|Identifies affected people as well as target audiences; considers interests,
+power, access needs, trust, culture and possible unintended effects.
+
+|Objectives and planning
+|Defines specific communication objectives, baselines, strategy, activities,
+responsibilities, dependencies, timing and meaningful measures.
+
+|Channel and format judgement
+|Selects earned, owned, shared, paid or interpersonal routes for a reason;
+adapts form without fragmenting the underlying truth.
+
+|Writing and editorial control
+|Produces accurate, clear, concise, audience-appropriate and accessible work;
+edits for meaning, tone, structure, evidence and house requirements.
+
+|Visual, audio and digital literacy
+|Briefs and checks non-text assets, metadata, accessibility, platform context,
+consent and likely distribution effects.
+
+|Media and intermediary relations
+|Builds relevant records, understands intermediary needs, pitches honestly,
+handles enquiries, keeps commitments and protects editorial independence.
+
+|Stakeholder relationships
+|Listens, responds respectfully, avoids extractive engagement and records how
+stakeholder input affects decisions.
+
+|Delivery and coordination
+|Prioritises concurrent work, manages versions and approvals, communicates
+status, preserves handover context and escalates blockers.
+
+|Issues, risk and change
+|Recognises emerging issues, calibrates urgency, prepares options, updates
+holding material and adapts activity as evidence changes.
+
+|Measurement and evaluation
+|Links measures to objectives; distinguishes activities, outputs, out-takes,
+outcomes and impact; avoids vanity or invented metrics; states attribution
+limits.
+
+|Ethics and public interest
+|Represents identity and support honestly, resists deception, identifies
+conflicts and affected publics, respects confidentiality and escalates unsafe,
+misleading or unlawful requests.
+
+|AI and data accountability
+|Follows task policy, minimises supplied data, declares material AI use, checks
+sources and claims, detects fabrication or bias and owns the final decision.
+
+|Collaboration and counsel
+|Invites relevant expertise, handles disagreement constructively, gives clear
+recommendations and records dissent or unresolved risk.
+
+|Reflection and transfer
+|Explains reasons, limitations and consequences; identifies improvements and
+adapts learning to a materially different context.
+|===
+
+Each observation cites events and artefact versions with `supporting`,
+`contrary` or `insufficient` polarity. Outcomes and prose polish cannot alone
+establish a competency.

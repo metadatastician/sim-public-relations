@@ -1,0 +1,19 @@
+# SPDX-License-Identifier: CC-BY-SA-4.0
+# TRUSTED HOST ONLY. Excluded from learner clients, exports and AI contexts.
+[reality]
+scenario = "northstar-mobility-001@0.1.0"
+fictional = true
+delivery = "never-to-learner-client"
+
+[fixed-history]
+partner-approval-state = "bellweather-partner-approval-is-withheld"
+access-testing-scope = "booking-flow-only-not-vehicle-journey"
+executive-quote-basis = "forecast-rephrased-as-observed-result"
+community-endorsement = "no-endorsement-was-given"
+journalist-source-position = "council-minutes-show-provisional-date"
+
+[deterministic-consequences]
+first-enquiry-minute = 180
+access-concern-minute = 300
+embargo-risk-minute = 420
+scheduled-launch-minute = 720

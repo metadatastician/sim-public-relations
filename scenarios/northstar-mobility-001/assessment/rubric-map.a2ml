@@ -1,0 +1,31 @@
+# SPDX-License-Identifier: CC-BY-SA-4.0
+[rubric]
+version = "0.1.0"
+one-correct-path = false
+outcome-equals-competence = false
+
+[threshold-competencies]
+ids = [
+  "role-brief-authority",
+  "research-listening",
+  "source-claim-evaluation",
+  "stakeholders-audiences",
+  "objectives-planning",
+  "writing-editorial-control",
+  "delivery-coordination",
+  "measurement-evaluation",
+  "ethics-public-interest",
+  "ai-data-accountability",
+]
+
+[routes]
+competent-standard = ["corrected-launch-standard", "staged-launch-standard"]
+competent-alternative = ["pause-and-replan-alternative", "narrow-owned-launch-alternative"]
+minimal = ["threshold-with-supported-escalation"]
+common-error = ["output-volume-no-outcome", "late-approval", "blanket-pitch"]
+critical-error = ["invented-endorsement", "knowingly-false-claim", "contact-data-to-ai"]
+
+[authority]
+pack = "uk-pr-practice-provisional@0.1.0"
+status = "PROVISIONAL-UNREVIEWED"
+authoritative-scoring = false

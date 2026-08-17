@@ -1,0 +1,23 @@
+// SPDX-License-Identifier: CC-BY-SA-4.0
+= Roadmap
+
+. Validate the entry-level construct with career starters, career changers,
+  hiring managers, agency and in-house practitioners, and educators.
+. Obtain independent ethics, accessibility and safeguarding review of the
+  Northstar Mobility scenario and every scored interpretation.
+. Extend the native replay kernel into a local-first learner vertical slice:
+  inbox, evidence requests, workbench, approvals, stakeholder responses,
+  debrief, persistence and export.
+. Add adversarial tests proving that hidden reality and model answers cannot
+  enter learner bundles or AI prompts.
+. Pilot paired human/AI and human-only runs to validate AI-direction and
+  verification observations without rewarding tool access.
+. Add a mentor/facilitator review workflow and calibration materials.
+. Validate the evidence passport with employers without representing it as
+  employment or accredited experience.
+. Author progressive scenarios for agency, in-house, public-sector, charity,
+  internal communications, public affairs and crisis contexts.
+. Establish reviewed, effective-dated UK professional-practice reference packs;
+  support other jurisdictions only through separately reviewed packs.
+. Pursue qualification, CPD or recruitment partnerships only under separately
+  named external approval and evaluation.
