@@ -15,7 +15,7 @@
 # fact anyone can recompute and check — never copy one from another repo, and
 # never make one up. Recompute this one any time with:
 #
-#     uuidgen --sha1 --namespace @url --name "github.com/{{OWNER}}/{{REPO}}"
+#     uuidgen --sha1 --namespace @url --name "github.com/metadatastician/sim-public-relations"
 #
 # Verify the method first by reproducing a known worked example:
 #     janus example -> e216170e-ff47-5a5c-bbdd-15e61c8190c8
@@ -23,11 +23,11 @@
 # The owner segment is part of the derived name, so it is part of the IDENTITY:
 # the same repo hosted under a different owner has a different uuid. Record the
 # owner that is TRUE TODAY, and re-derive if it ever moves.
-uuid = "{{UUID}}"
+uuid = "3b9ae0bb-dfc2-561e-b9e7-a0bca5cd40be"
 primary-forge = "github"
-primary-owner = "{{OWNER}}"
-canonical-name = "{{REPO}}"
-prefixed-name = "UNASSIGNED-{{REPO}}"   # becomes <primary>-{{REPO}} once the clade is chosen
+primary-owner = "metadatastician"
+canonical-name = "sim-public-relations"
+prefixed-name = "UNASSIGNED-sim-public-relations"   # becomes <primary>-sim-public-relations once the clade is chosen
 
 [clade]
 # ---------------------------------------------------------------------------
@@ -79,25 +79,25 @@ prefixed-name = "UNASSIGNED-{{REPO}}"   # becomes <primary>-{{REPO}} once the cl
 primary = "UNASSIGNED"
 primary-name = "UNASSIGNED"
 secondary = []                # [] unless there is a genuine SECOND core value proposition
-assigned = "{{CURRENT_DATE}}"
+assigned = "2026-08-18"
 rationale = ""                # why THIS category — in value-proposition terms
 
 [forges]
-github = "{{OWNER}}/{{REPO}}"
+github = "metadatastician/sim-public-relations"
 gitlab = ""       # populated if/when mirrored
 bitbucket = ""    # populated if/when mirrored
 
 [lineage]
 type = "standalone"           # standalone | monorepo | monorepo-child | inflated | deflated
 parent = ""                   # a monorepo PARENT — never a description of this repo
-born = "{{CURRENT_DATE}}"
+born = "2026-08-18"
 previous-names = []
 instantiated-from = "rsr-template-repo"
 
 [status]
 # One of: reserved incubating active dormant | merged superseded archived extinct
 phase = "incubating"          # a repo created today has not proven anything yet
-since = "{{CURRENT_DATE}}"
+since = "2026-08-18"
 present = true
 aliases = []
 merged-into = ""
@@ -107,7 +107,7 @@ ended = ""
 
 [[status.history]]
 phase = "incubating"
-since = "{{CURRENT_DATE}}"
+since = "2026-08-18"
 note = "created from rsr-template-repo; clade not yet chosen; not yet registered"
 
 # ---------------------------------------------------------------------------

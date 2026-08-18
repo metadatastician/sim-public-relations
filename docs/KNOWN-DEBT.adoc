@@ -27,9 +27,9 @@
 
 == Repository conversion
 
-The repository began as a broad RSR template. The core product documents,
-citation, audit posture and arrival identity are now specific to PR Practice
-Lab, but generic template infrastructure and placeholders remain outside the
-Phase A product surface. They must be audited and either initialised, adapted or
-removed without weakening required estate controls. Their presence must not be
-mistaken for implemented product capability.
+The repository began as a broad RSR template. Repository identity tokens are
+now initialised for PR Practice Lab, and the placeholder, root-shape and A2ML
+gates cover the converted tree. Generic infrastructure still exists outside the
+Phase A product surface and requires a later keep/adapt/remove audit. In
+particular, the container and ABI scaffolds are not verified product delivery
+surfaces and must not be presented as implemented capability.

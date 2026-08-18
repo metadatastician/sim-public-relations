@@ -1,5 +1,9 @@
 # SPDX-License-Identifier: CC-BY-SA-4.0
 # TRUSTED HOST ONLY. Excluded from learner clients, exports and AI contexts.
+[metadata]
+project = "sim-public-relations"
+version = "0.1.0"
+
 [reality]
 scenario = "northstar-mobility-001@0.1.0"
 fictional = true
