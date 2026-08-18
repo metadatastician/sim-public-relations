@@ -144,12 +144,12 @@ dependencies:
         repo_id: 623796603
     'hyperpolymath/a2ml-ecosystem@main':
         ref: 'main'
-        commit: 'sha1-aa4b836bd969df2bc58128cb8e3d20bbc88d5e79'
+        commit: 'sha1-4423af6cdac44df81dd99710a95aa42379c926f9'
         owner_id: 6759885
         repo_id: 1275649586
     'hyperpolymath/k9-ecosystem@main':
         ref: 'main'
-        commit: 'sha1-89f3c2702f4f650a92aa7411502f38da06abd562'
+        commit: 'sha1-a535de3ba5a9f65ceec92fa61bbf5e59f54675f5'
         owner_id: 6759885
         repo_id: 1275650185
     'oven-sh/setup-bun@v2.2.0':
