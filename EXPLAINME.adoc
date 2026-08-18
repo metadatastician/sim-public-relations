@@ -1,118 +1,198 @@
 // SPDX-License-Identifier: CC-BY-SA-4.0
 // Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
-= RSR Template Repo - Explainme
-image:https://img.shields.io/badge/License-MPL_2.0-blue.svg[License: MPL-2.0,link="https://opensource.org/licenses/MPL-2.0"]
-
-:toc:
+= PR Practice Lab — How It Works
+:toc: left
 :icons: font
+:reproducible:
 
-This file explains how the key template claims map to real files.
+[.lead]
+This document connects PR Practice Lab's product claims to the implementation
+and records where the present implementation stops. It describes the Phase A
+vertical slice; it is not a claim that the complete learner product exists.
 
-== Central Session Protocol Authority
+== Product boundary
 
-Claim:
-Session protocols are centrally maintained and not duplicated in this template.
+PR Practice Lab is fictional professional-learning software for practising
+public-relations and communications judgement. It does not provide employment,
+placement hours, live client work, a professional qualification, accredited
+CPD, or a guarantee of competence or employment. The authoritative product
+boundary is stated in `docs/foundation/foundation-spec-v0.1.adoc` and repeated
+inside the scenario manifest and native kernel.
 
-How this is implemented:
+The first scenario, `northstar-mobility-001`, places a learner in a bounded
+junior agency role supporting the fictional launch of an accessible community
+transport pilot. All organisations, people, publications, contacts and
+messages in that scenario are fictional.
 
-* The local dispatcher (`session/dispatch.sh`) maps canonical commands to central
-  protocol paths in `standards/session-management-standards`.
-* Local files (`session/custom-checks.k9`, `session/local-hooks.sh`,
-  `coordination.k9`) are integration-only.
+== Epistemic model
 
-Caveat:
+The simulator keeps five kinds of knowledge separate:
 
-* If `SESSION_STANDARDS_DIR` is unset and no adjacent standards checkout exists,
-  the dispatcher records the command but cannot resolve central checklist paths.
+. *Authored reality* — immutable fictional history and response conditions.
+. *Potential evidence* — material that exists but may never be requested.
+. *Disclosed record* — exactly what was available to the learner at a logical
+  point in the run.
+. *Learner model* — interpretations, assumptions, uncertainties, plans and
+  artefacts produced from the disclosed record.
+. *Normative model* — provisional professional rules, approvals and assessment
+  interpretations.
 
-== Canonical Command Surface
+This separation prevents hindsight scoring and keeps an approved organisational
+message from being mistaken for an established fact. The architecture and trust
+boundaries are specified in `docs/architecture/system-architecture.adoc`.
 
-Claim:
-Template bindings align to one canonical command model.
+== Scenario packaging and hidden reality
 
-How this is implemented:
+Scenario material lives under `scenarios/northstar-mobility-001/`:
 
-* `Justfile` provides thin aliases (`intake-repo`, `checkpoint-change`,
-  `verify-maintenance`, `verify-substantial`, `verify-release`, `close-planned`,
-  `close-urgent`, `recover-repo`, `handover-*`).
-* Every alias calls `session/dispatch.sh` with canonical verb-object pairs.
+* `manifest/public.a2ml` identifies learner-visible scenario metadata;
+* `evidence/` contains the incomplete brief and requestable fictional evidence;
+* `tasks/` declares concurrent workstreams and plural defensible routes;
+* `assessment/rubric-map.a2ml` maps observable events to provisional rubric
+  dimensions without equating outcome with competence;
+* `fixtures/golden-runs.a2ml` declares expected routes and adverse cases; and
+* `reality/reality.a2ml` contains trusted authored reality that must never be
+  delivered to a learner client or learner-controlled AI.
 
-Caveat:
+`tools/validate-scenario.sh` checks identities, required material, claim
+boundaries, plural routes and native/source alignment. It derives a non-empty
+deny list from authored reality and scans learner-side source material for exact
+scenario-specific leak tokens.
 
-* Recipes are wrappers only. They do not replace protocol content from
-  the central standards repo.
+`tools/test-scenario-boundary.sh` proves that validator is not vacuously green.
+It requires a clean copy to pass and plants three defects that must fail: a
+hidden-truth leak, an empty derived deny list and a scenario falsely represented
+as employment experience.
 
-== Runtime State Is Local
+This source-side gate is deliberately narrow. Packaged artefacts, compiled
+binaries, runtime channels, AI prompts and timing side channels are not yet
+covered; that gap is recorded in `docs/KNOWN-DEBT.adoc`.
 
-Claim:
-Session state is per-repository runtime output, not standards text.
+== Deterministic native kernel
 
-How this is implemented:
+`src/practice.zig` is the trusted Phase A event/replay kernel. Commands become
+authoritative only after their preconditions are checked and their events are
+appended. The kernel models evidence requests, uncertainty, objectives,
+stakeholders, drafting, verification, accessibility, approval, enquiry
+handling, route choice, campaign consequences and assessment observations.
 
-* `session/dispatch.sh` writes command and continuity-core capture stubs to
-  `.session/LAST-CANONICAL-COMMAND.md` in the target repository path.
+`src/main.zig` provides a small command-line projection. It can show the Phase A
+home screen, replay one named route, or replay all implemented golden routes:
 
-Caveat:
+[source,sh]
+----
+zig build run -- demo corrected
+zig build run -- demo staged
+zig build run -- demo pause
+zig build run -- demo critical
+zig build run -- golden
+----
 
-* Runtime files are intentionally lightweight and require human/agent completion.
+Each replay reports the route, threshold result, critical-error state, event
+count, campaign consequence measures and deterministic digest. A favourable
+campaign outcome does not substitute for competent reasoning, and a critical
+integrity error cannot be averaged away by polished work elsewhere.
 
-== Template Token Policy
+The CLI is an executable replay and assessment slice, not yet an interactive
+learner interface. There is no inbox UI, persistent run store, facilitator
+view, hosted service or evidence-passport export.
 
-Claim:
-Placeholders are explicit template content until initialization.
+== Assessment model
 
-How this is implemented:
+The assessed unit is a traceable professional act:
 
-* `README.adoc` and bootstrap recipes keep `{{TOKEN}}` placeholders visible.
-* `just repo-init` performs token replacement.
+----
+available evidence -> interpretation + uncertainty -> objective and audience
+-> considered options -> approved action -> response -> adaptation -> reflection
+----
 
-Caveat:
+`docs/assessment/competency-framework.adoc` defines observable capabilities.
+`docs/assessment/rubric-v0.1.adoc` and the scenario rubric map connect those
+capabilities to recorded events. `docs/assessment/validity-limitations.adoc`
+states what a run can and cannot support.
 
-* Uninitialized placeholders must not be treated as project-specific truth.
+The professional reference pack is `PROVISIONAL/UNREVIEWED`. No CIPR, PRCA,
+AMEC, employer, educator, accessibility specialist or independent practitioner
+has approved the rubric or scenario. The implementation therefore rejects
+authoritative scoring and makes no accreditation or qualification claim.
 
-== Dependency Updates (Dependabot)
+== AI boundary
 
-Claim:
-Dependency bumps land fast and safely, without manual chasing.
+AI is treated as part of the professional situation, not as an authoritative
+assessor. A task may prohibit, permit or require AI assistance. Permitted use
+must be declared and verified, and the learner remains accountable for the
+result. AI output is not evidence.
 
-How this is implemented:
+No external AI service is required by the reference implementation. Hidden
+reality, response logic, rubric interpretations and model routes must never be
+sent to a learner-controlled model.
 
-* `dependabot.yml` watches the Dependabot-supported ecosystems the estate
-  actually uses: `github-actions`, `cargo`, `mix` (Elixir), `docker`.
-* `dependabot-automerge.yml` auto-merges *every* bump (patch/minor/major,
-  security or routine) **once the required checks are green** — a broken bump
-  fails CI and stays open (you get an email); it never lands on a red `main`.
+== Verification
 
-Caveat:
+The Phase A executable and boundary checks are:
 
-* Dependabot has **no Deno or Bun ecosystem**, and `pnpm` only rides under the
-  `npm` ecosystem (itself banned). For this Deno-first estate Dependabot cannot
-  watch the runtime dependencies; the `npm`/`pip` entries are retained only for
-  transitional/legacy manifests and are otherwise inert. Deno dependency
-  currency is managed via `deno.json`/`deno.lock`, not Dependabot.
-* Do **not** add Dependabot as a ruleset *bypass* actor: that lets bumps skip
-  the required checks (secret-scanning, SAST), removing the safety gate and the
-  "it broke" signal. Auto-merge-on-green gives fast merges without it.
+[source,sh]
+----
+zig build test
+zig build run -- golden
+bash tools/validate-scenario.sh
+bash tools/test-scenario-boundary.sh
+----
 
-== Julia Registry Packages — Standalone Repo Requirement
+Passing these establishes only what those instruments cover: the current Zig
+kernel tests, deterministic golden replay, source-side scenario structure and
+the three planted boundary failures. It does not establish accessibility
+conformance, professional validity, learner efficacy, deployment readiness or
+security of a future interactive product.
 
-Claim:
-If this template is used to create a Julia package, it must remain a standalone repository registered with the Julia package registry.
+== Repository map
 
-How this is implemented:
+[cols="1,3",options="header"]
+|===
+| Path | Purpose
 
-* Julia's package registry (General.jl or other) expects each package to be a standalone GitHub repository with `Project.toml` at the repository root.
-* Installation via `Pkg.add()`, dependency resolution, and automated CI/CD all depend on this canonical structure.
+| `README.adoc`
+| Product intent, boundaries and present status.
 
-Caveat:
+| `0-AI-MANIFEST.a2ml`
+| Product-specific rules for agents working in the repository.
 
-* Do NOT move this repository into a monorepo or subdirectory, as this breaks registry registration and package discoverability.
-* Julia packages published to a registry must each remain a standalone top-level repository (registry registration and package discovery require it).
-* Non-registry Julia packages can be organized differently if they are not published to any registry.
+| `docs/foundation/`
+| Product contract, learning model, claims and experience progression.
 
+| `docs/assessment/`
+| Competency framework, rubric and validity limitations.
 
-== License
+| `docs/scenarios/`
+| Human-readable design for the Northstar Mobility scenario.
 
-This project is licensed under the Mozilla Public License, v. 2.0. See the `LICENSE` file for details.
+| `scenarios/`
+| Machine-readable authored scenario, evidence, tasks, reality and fixtures.
 
-SPDX-License-Identifier: CC-BY-SA-4.0
+| `rule-packs/`
+| Provisional, explicitly non-authoritative professional reference pack.
+
+| `src/` and `build.zig`
+| Deterministic native kernel and command-line projection.
+
+| `tools/`
+| Scenario validation and planted-failure boundary tests.
+
+| `docs/KNOWN-DEBT.adoc`
+| Known missing product capabilities, validation gaps and conversion residue.
+|===
+
+== Design lineage
+
+The epistemic and assessment structure is adapted from
+`metadatastician/sim-insolvency`: immutable authored reality, monotonic
+disclosure, beliefs distinct from facts, append-only events, plural defensible
+routes, competence separate from consequence and post-submission reveal. The
+professional content and progression model here are specific to public
+relations and communications practice.
+
+== Licence
+
+Code, configuration and scripts are MPL-2.0. Documentation and fictional
+scenario materials are CC-BY-SA-4.0. Per-file SPDX declarations are
+authoritative.

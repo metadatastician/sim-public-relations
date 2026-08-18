@@ -1,12 +1,12 @@
 # SPDX-License-Identifier: MPL-2.0
 # Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
 #
-# AGENTIC.a2ml — AI agent constraints and capabilities
-# Defines what AI agents can and cannot do in this repository.
+# AGENTIC.a2ml — AI agent constraints for PR Practice Lab.
 
 [metadata]
-version = "0.1.0"
-last-updated = "2026-04-11"
+project = "sim-public-relations"
+last-updated = "2026-08-18"
+manifest = "0-AI-MANIFEST.a2ml"
 
 [agent-permissions]
 can-edit-source = true
@@ -15,13 +15,23 @@ can-edit-docs = true
 can-edit-config = true
 can-create-files = true
 
-[agent-constraints]
-# What AI agents must NOT do:
-# - Never use banned language patterns (believe_me, unsafeCoerce, etc.)
-# - Never commit secrets or credentials
-# - Never use banned languages (TypeScript, Python, Go, etc.)
-# - Never place state files in repository root (must be in .machine_readable/)
-# - Never use AGPL license (use MPL-2.0)
+[hard-rules]
+rules = [
+  "Never move, copy or quote hidden scenario reality, response rules, assessment interpretations or model routes into learner-visible artefacts, AI prompts, issues or pull-request bodies.",
+  "Never represent simulation output as employment, placement hours, live client work, a professional qualification or accredited CPD.",
+  "Never soften the fictional-practice disclaimer or claim professional validation that has not occurred.",
+  "AI output is not evidence; permitted AI use must be declared and verified, and human accountability remains.",
+  "Never weaken a gate to make it pass, and never count a negative scan that has not been proved with a planted positive defect.",
+  "Never infer competence from campaign outcome, prose fluency, accent, social background, personal following or tool access alone.",
+  "Never commit secrets or credentials.",
+]
+
+[before-you-change-anything]
+steps = [
+  "Read 0-AI-MANIFEST.a2ml and every file listed under its required-reading section.",
+  "Read docs/KNOWN-DEBT.adoc so known gaps are not rediscovered or silently overclaimed.",
+  "Run the product golden path before and after material source or scenario changes.",
+]
 
 [maintenance-integrity]
 fail-closed = true
@@ -30,22 +40,11 @@ allow-silent-skip = false
 require-rerun-after-fix = true
 release-claim-requires-hard-pass = true
 
-# ============================================================================
-# METHODOLOGY (ADR-002)
-# ============================================================================
-# Detailed methodology configuration lives in:
-#   .machine_readable/bot_directives/methodology.a2ml
-#   .machine_readable/bot_directives/coverage.a2ml
-#   .machine_readable/bot_directives/debt.a2ml
-#
-# AGENTIC.a2ml declares WHAT agents can do (permissions, gating).
-# bot_directives/ declares HOW agents should work (methodology).
-
 [methodology]
 instructions-dir = ".machine_readable/bot_directives/"
 default-mode = "hybrid"
 
 [automation-hooks]
-# on-enter: Read 0-AI-MANIFEST.a2ml, then STATE.a2ml, then bot_directives/
-# on-exit: Update STATE.a2ml, coverage.a2ml, and debt.a2ml with session outcomes
-# on-commit: Run just validate-rsr
+on-enter = "Read 0-AI-MANIFEST.a2ml, then the required product and descriptile files."
+on-exit = "Report exact checks run, their horizon and all remaining known debt."
+on-commit = "Run the product golden path and verify the commit signature."

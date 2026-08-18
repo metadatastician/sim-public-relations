@@ -3,7 +3,7 @@
 
 [metadata]
 version = "0.2.0"
-last-updated = "2026-08-17"
+last-updated = "2026-08-18"
 
 [project]
 name = "sim-public-relations"
@@ -37,7 +37,7 @@ commands = [
 
 [work-allocation]
 current = [
-  "Product foundation, competency model and Northstar Mobility authored scenario created on feat/pr-career-simulator.",
+  "Product foundation, competency model and Northstar Mobility authored scenario implemented in the Phase A publication candidate.",
   "Deterministic native replay kernel implements plural routes, separate competency/outcome reporting and integrity-critical failure.",
   "Next implementation boundary: interactive learner shell and persistence without hidden-truth leakage.",
 ]

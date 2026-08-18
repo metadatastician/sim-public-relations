@@ -27,7 +27,9 @@
 
 == Repository conversion
 
-The repository began as a broad RSR template. Product-facing files are now
-specific, but generic template infrastructure and placeholders remain outside
-the Phase A product surface. They must be audited and either initialised,
-adapted or removed without weakening required estate controls.
+The repository began as a broad RSR template. The core product documents,
+citation, audit posture and arrival identity are now specific to PR Practice
+Lab, but generic template infrastructure and placeholders remain outside the
+Phase A product surface. They must be audited and either initialised, adapted or
+removed without weakening required estate controls. Their presence must not be
+mistaken for implemented product capability.

@@ -1,17 +1,16 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
+type: software
+title: "PR Practice Lab"
+version: "0.1.0-phase-a"
 authors:
-- family-names: "{{AUTHOR_LAST}}"
-  given-names: "{{AUTHOR_FIRST}}"
-  orcid: "https://orcid.org/0000-0000-0000-0000" # Placeholder
-title: "{{PROJECT_NAME}}"
-version: 0.1.0
-date-released: "{{CURRENT_DATE}}"
-url: "https://{{FORGE}}/{{OWNER}}/{{REPO}}"
-repository-code: "https://{{FORGE}}/{{OWNER}}/{{REPO}}"
+  - family-names: "Jewell"
+    given-names: "Jonathan D.A."
+repository-code: "https://github.com/metadatastician/sim-public-relations"
 license: MPL-2.0
 keywords:
-  - "rsr"
-  - "formal-verification"
-  - "neurosymbolic"
-  - "provenance"
+  - public-relations
+  - communications
+  - simulation
+  - professional-learning
+  - assessment
