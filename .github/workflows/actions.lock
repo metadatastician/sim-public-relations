@@ -5,6 +5,9 @@ version: 'v0.0.2'
 workflows:
     '.github/workflows/boj-build.yml':
         - 'actions/checkout@v7.0.1'
+    '.github/workflows/codeql.yml':
+        - 'actions/checkout@v7.0.1'
+        - 'github/codeql-action@v4.37.4'
     '.github/workflows/container-build.yml':
         - 'actions/checkout@v7.0.1'
     '.github/workflows/dependabot-automerge.yml':
@@ -129,6 +132,11 @@ dependencies:
         commit: 'sha1-54075bcc5e249e4758d363f27d099f55d843f124'
         owner_id: 47606891
         repo_id: 331103973
+    'github/codeql-action@v4.37.4':
+        ref: 'v4.37.4'
+        commit: 'sha1-f205ea1c3313d32999d8d6a48b4f6530d4437b38'
+        owner_id: 9919
+        repo_id: 259445878
     'haskell-actions/setup@v2.11.0':
         ref: 'v2.11.0'
         commit: 'sha1-cd0d9bdd65b20557f41bea4dbe43d0b5fbbfe553'
