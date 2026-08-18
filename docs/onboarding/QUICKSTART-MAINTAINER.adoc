@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: CC-BY-SA-4.0
 // Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 // Template: QUICKSTART-MAINTAINER.adoc — packaging, deploying, and maintaining
-// Replace rsr-template-repo, {{PACKAGE_NAME}}, {{DEPS}} with actuals
+// Replace rsr-template-repo, pr-practice-lab, Zig 0.16 and a POSIX-compatible shell with actuals
 = rsr-template-repo — Quick Start for Platform Maintainers
 :toc:
 :toclevels: 2
@@ -13,7 +13,7 @@ distribution on your platform.
 
 == Runtime Dependencies
 
-{{DEPS}}
+Zig 0.16 and a POSIX-compatible shell
 
 == Build from Source
 
@@ -24,7 +24,7 @@ cd rsr-template-repo
 just build-release
 ----
 
-Output: `{{BUILD_OUTPUT_PATH}}`
+Output: `zig-out/bin/pr-practice-lab`
 
 == Packaging
 
@@ -59,10 +59,10 @@ Files installed:
 | `$PREFIX/bin/`
 | Executables
 
-| `$PREFIX/share/{{PACKAGE_NAME}}/`
+| `$PREFIX/share/pr-practice-lab/`
 | Data files, assets
 
-| `$PREFIX/share/doc/{{PACKAGE_NAME}}/`
+| `$PREFIX/share/doc/pr-practice-lab/`
 | Documentation
 
 | `$PREFIX/share/applications/`
@@ -74,9 +74,9 @@ Files installed:
 
 == Configuration
 
-Default config location: `$XDG_CONFIG_HOME/{{PACKAGE_NAME}}/config.toml`
+Default config location: `$XDG_CONFIG_HOME/pr-practice-lab/config.toml`
 
-Fallback: `$HOME/.config/{{PACKAGE_NAME}}/config.toml`
+Fallback: `$HOME/.config/pr-practice-lab/config.toml`
 
 == Health Checks
 
@@ -96,7 +96,7 @@ just build-release
 just install --prefix=/usr/local
 ----
 
-Or via OPSM: `opsm update {{PACKAGE_NAME}}`
+Or via OPSM: `opsm update pr-practice-lab`
 
 == Security Notes
 
@@ -111,8 +111,8 @@ For deploying multiple instances (e.g., different users or tenants):
 
 [source,bash]
 ----
-just install --prefix=/opt/{{PACKAGE_NAME}}-instance1 --config=/etc/{{PACKAGE_NAME}}/instance1.toml
-just install --prefix=/opt/{{PACKAGE_NAME}}-instance2 --config=/etc/{{PACKAGE_NAME}}/instance2.toml
+just install --prefix=/opt/pr-practice-lab-instance1 --config=/etc/pr-practice-lab/instance1.toml
+just install --prefix=/opt/pr-practice-lab-instance2 --config=/etc/pr-practice-lab/instance2.toml
 ----
 
 Each instance has isolated config, data, and logs.

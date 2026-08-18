@@ -1,0 +1,145 @@
+// SPDX-License-Identifier: CC-BY-SA-4.0
+= PR Practice Lab Foundation Specification v0.1
+:toc: left
+:reproducible:
+
+== Purpose
+
+PR Practice Lab is an evidence-driven, time-aware practice simulator for
+developing and assessing professional judgement in fictional public-relations
+and communications work. Its priority user is a person blocked from a first
+role or career transition because job advertisements ask for prior practical
+experience.
+
+It creates structured opportunities to perform realistic work, receive
+evidence-linked feedback and assemble a transparent simulated-practice record.
+It is not employment, live client work, supervised experience, a professional
+qualification, a promise of competence or employment, or accredited CPD.
+
+== Design response to AI displacement
+
+AI can perform more of the routine production that once gave beginners a low-
+risk way to learn. The simulator therefore treats content generation as one
+component of a larger professional system. It exercises the capabilities that
+remain necessary when a first draft is cheap: problem framing, source testing,
+stakeholder understanding, objectives, judgement, relationships, approval,
+ethical resistance, verification, measurement, adaptation and accountability.
+
+AI use is observable practice. A scenario declares whether it is prohibited,
+permitted or required for each task. A learner records the system used, the
+material supplied, the purpose, substantive interventions and verification.
+The learner remains responsible for the result.
+
+== Product invariants
+
+. Hidden authored reality is immutable during a run and never enters an
+  untrusted learner client or learner-controlled AI context.
+. Learner-visible disclosure is monotonic: an item may be corrected,
+  contradicted or superseded, but its historical availability is not erased.
+. Fact, source, disclosure, interpretation, assumption, uncertainty,
+  recommendation and approved message are distinct objects.
+. Commands are attempts; only validated events change authoritative state.
+. The event record is deterministic and portable for a recorded scenario seed.
+. The learner can inspect what data is recorded and export or delete local runs.
+. Assessment cites observable events and artefact revisions, not personality,
+  accent, social background, personal following or outcome alone.
+. Campaign outcome, client satisfaction and learner competence are reported
+  separately.
+. More than one route may be defensible on the information then available.
+. Accessibility is a design and assessment concern, not a cosmetic channel
+  adaptation at the end.
+. AI assistance never converts unverified material into evidence and never
+  removes human accountability.
+. A portfolio export is visibly marked as fictional simulated practice.
+
+== Phase A capability
+
+A learner opens `northstar-mobility-001`, accepts a bounded junior agency role,
+checks the brief, investigates the organisation and issue, maps stakeholders,
+builds a working media/contact record, defines objectives and measures, proposes
+a channel plan, drafts and revises materials, manages approvals, responds to an
+enquiry, records AI use where applicable, monitors fictional response and
+recommends whether to proceed, pause or change course.
+
+Tasks arrive through realistic work artefacts: email, meeting note, chat,
+research extract, monitoring item, draft, approval comment and stakeholder
+response. Workstreams continue concurrently. Deadlines and changing evidence
+force prioritisation; the learner cannot investigate or perfect everything.
+
+== Practice ladder
+
+Phase A supports four overlapping levels rather than job-title cosplay:
+
+. `supported-production`: accurate research, monitoring, records, drafts,
+  formatting, accessibility and version discipline.
+. `coordinated-delivery`: brief clarification, schedules, approvals, channel
+  adaptation, contact handling and status communication.
+. `bounded-recommendation`: audience, objective, option, risk, measurement and
+  escalation recommendations with reasons.
+. `integrated-response`: reprioritisation when facts, stakeholder response or
+  organisational decisions change.
+
+A beginner may practise an advanced situation with support; completing it does
+not confer a job title or professional status.
+
+== Learning model
+
+The learning unit is a traceable act:
+
+----
+available evidence -> interpretation + uncertainty -> objective and audience
+-> considered options -> approved action -> response -> adaptation -> reflection
+----
+
+Assessment observes brief hygiene, research, source evaluation, audience and
+stakeholder reasoning, planning, content judgement, editorial control,
+relationships, delivery, measurement, ethics, AI accountability, collaboration,
+prioritisation and reflection. Outcomes are consequences, not substitutes for
+evidence of reasoning.
+
+== Assessment and feedback
+
+Practice mode may offer staged prompts. Assessment mode offers accessibility
+and process affordances but no correctness hints before submission. Debrief
+reveals the authored chronology, missed or contradicted evidence, response
+logic, alternative defensible routes and rubric observations.
+
+Critical errors remain separate from an aggregate result. Fabricating evidence,
+inventing public support, concealing representation, knowingly publishing a
+material falsehood, exposing protected personal data, bypassing a required
+approval, or disguising prohibited AI use cannot be averaged away by polished
+writing.
+
+== Evidence passport boundary
+
+The export binds selected artefacts and observations to a scenario version,
+rule-pack version and event-record digest. It reports only what was observed in
+the simulation. Hours are `simulation elapsed time`, never employment,
+placement, client-service or accredited-practice hours.
+
+== Professional references
+
+The initial UK reference pack draws provisionally on first-party CIPR, PRCA and
+AMEC materials recorded in `docs/rules/authority-registry.adoc`. References
+guide scenario authorship and debriefs but cannot support authoritative scoring
+until versioned interpretations are reviewed by competent practitioners.
+
+== Privacy, safety and inclusion
+
+All organisations, people, journalists, stakeholder groups, publications and
+messages in authored scenarios are fictional. The reference product requires
+no live contacts, social posting, scraping, media databases or external AI.
+Learners do not impersonate real people or contact real organisations.
+
+The product must support keyboard use, screen-reader structure, captions or
+transcripts, adjustable time pressure, plain-language instructions and a
+documented accommodation mode. Assessment must distinguish a supported access
+need from the capability being assessed.
+
+== Acceptance
+
+This specification is satisfied only by executable evidence: deterministic
+replay, branch fixtures, scenario validation, hidden-truth leak canaries,
+accessible interaction tests, assessment calibration and honest capability
+reporting. Missing integrations or professional review must fail loudly or be
+reported as provisional; they must never be presented as complete.

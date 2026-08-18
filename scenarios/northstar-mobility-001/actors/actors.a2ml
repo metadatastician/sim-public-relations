@@ -1,0 +1,34 @@
+# SPDX-License-Identifier: CC-BY-SA-4.0
+[metadata]
+project = "sim-public-relations"
+version = "0.1.0"
+
+[[actor]]
+id = "learner"
+role = "junior-account-practitioner"
+organisation = "beacon-and-rowe"
+
+[[actor]]
+id = "account-lead"
+role = "fictional-account-director"
+organisation = "beacon-and-rowe"
+
+[[actor]]
+id = "client-lead"
+role = "fictional-northstar-founder"
+organisation = "northstar-mobility"
+
+[[actor]]
+id = "service-lead"
+role = "fictional-operations-lead"
+organisation = "northstar-mobility"
+
+[[actor]]
+id = "access-forum"
+role = "fictional-affected-stakeholder-group"
+organisation = "bellweather-access-forum"
+
+[[actor]]
+id = "local-journalist"
+role = "fictional-local-transport-reporter"
+organisation = "bellweather-record"

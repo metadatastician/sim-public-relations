@@ -1,0 +1,35 @@
+// SPDX-License-Identifier: CC-BY-SA-4.0
+= Known Debt
+
+== Product and validation
+
+* A deterministic native replay kernel exists, but there is no interactive
+  learner interface, persistence, facilitator view or evidence-passport export.
+* Four native route fixtures are replayable; the remaining declared error and
+  threshold fixtures are not yet implemented.
+* The hidden-truth gate currently scans source-side learner material; packaged
+  file, binary, runtime, prompt and timing-drift channels await the vertical
+  slice.
+* No accessibility conformance or accommodation tests exist yet.
+* No evidence-passport schema, digest or selective-export UI exists yet.
+
+== Professional and assessment validity
+
+* The UK reference pack is provisional and unreviewed.
+* The competency framework has not been mapped or validated by CIPR, PRCA,
+  AMEC, employers, educators or independent practitioners.
+* Northstar Mobility requires review by early-career practitioners, hiring
+  managers, agency and in-house practitioners, disabled people and
+  accessibility specialists.
+* No reviewer-calibration study, inter-rater evidence, transfer study or
+  adverse-impact analysis has been conducted.
+* The simulator has no accreditation, qualification or CPD status.
+
+== Repository conversion
+
+The repository began as a broad RSR template. Repository identity tokens are
+now initialised for PR Practice Lab, and the placeholder, root-shape and A2ML
+gates cover the converted tree. Generic infrastructure still exists outside the
+Phase A product surface and requires a later keep/adapt/remove audit. In
+particular, the container and ABI scaffolds are not verified product delivery
+surfaces and must not be presented as implemented capability.

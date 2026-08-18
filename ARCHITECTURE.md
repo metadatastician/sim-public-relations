@@ -1,47 +1,13 @@
 # Architecture
 
-## Overview
+PR Practice Lab uses a trusted scenario host, append-only event/command kernel,
+learner-visible projections and a separately derived debrief/evidence passport.
+Hidden authored reality, response rules and assessment interpretations never
+enter learner clients or learner-controlled AI contexts.
 
-This repository follows a modular, maintainable architecture designed for clarity, scalability, and long-term sustainability.
+The full architecture and trust model are documented in
+[`docs/architecture/system-architecture.adoc`](docs/architecture/system-architecture.adoc).
 
-## Directory Structure
-
-```
-.
-├── src/           # Source code
-├── tests/        # Test suites
-├── docs/         # Documentation
-├── scripts/      # Utility scripts
-├── config/       # Configuration files
-├── LICENSE       # License file
-├── LICENSES/     # Full license texts
-└── README.adoc   # Project documentation
-```
-
-## Design Principles
-
-- **Separation of Concerns**: Each module has a single responsibility
-- **Testability**: Code is written to be easily testable
-- **Documentation**: All public APIs are documented
-- **Configuration**: Environment-specific settings are externalized
-
-## Dependencies
-
-- External dependencies are minimized and clearly declared
-- Version pinning is used for reproducibility
-
-## Security Considerations
-
-- Sensitive data is never committed to the repository
-- Secrets are managed through environment variables or secure vaults
-- Regular dependency audits are performed
-
-## Maintainability
-
-- Code follows consistent style guidelines
-- Pull requests require review and CI checks
-- Issues and discussions are tracked transparently
-
----
-
-*Last updated: 2026-07-18*
+The implementation includes a deterministic native replay kernel but not yet an
+interactive learner interface or persistent evidence passport. See
+[`docs/KNOWN-DEBT.adoc`](docs/KNOWN-DEBT.adoc).

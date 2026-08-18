@@ -1,62 +1,57 @@
 # SPDX-License-Identifier: MPL-2.0
-# Copyright (c) {{CURRENT_YEAR}} {{AUTHOR}} ({{OWNER}}) <{{AUTHOR_EMAIL}}>
+# Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
 #
-# ANCHOR.a2ml - authoritative anchor for this repository
+# ANCHOR.a2ml — Stable identity and release boundary for PR Practice Lab.
 
 [metadata]
 version = "1.0.0"
-last-updated = "{{CURRENT_DATE}}"
+last-updated = "2026-08-18"
 
 [anchor]
 schema = "hyperpolymath.anchor/1"
-repo = "{{OWNER}}/{{REPO}}"
+repo = "metadatastician/sim-public-relations"
 authority = "upstream-canonical"
-
 purpose = [
-  "Define canonical semantics and policy boundaries for this repository.",
-  "Declare what downstream/satellite repos can extend but not redefine.",
-  "Provide a stable golden path and invariant contract for release readiness.",
+  "Provide evidence-driven fictional practice for people blocked from entering public-relations and communications by the prior-experience trap.",
+  "Keep authored reality separate from learner-visible evidence and learner-controlled AI.",
+  "Assess observable professional reasoning separately from campaign consequence.",
 ]
 
 [identity]
-project = "{{PROJECT_NAME}}"
-kind = "{{PROJECT_KIND}}"                # language | library | service | tool
-one-sentence = "{{PROJECT_PURPOSE}}"
-domain = "{{PROJECT_DOMAIN}}"
+project = "PR Practice Lab"
+kind = "application"
+one-sentence = "A deterministic, evidence-driven simulator for practising public-relations and communications judgement in fictional scenarios."
+domain = "public-relations and communications professional learning"
 
-[semantic-authority]
-policy = "canonical"
-
-owns = [
-  "Project semantics and specification",
-  "Invariant definitions and contractiles",
-  "Reference implementation behavior",
+[invariants]
+items = [
+  "Simulated work is never represented as employment, placement hours, live client work, a qualification or accredited CPD.",
+  "Hidden authored reality, response rules and assessment interpretations never enter learner clients or learner-controlled AI contexts.",
+  "Facts, disclosures, interpretations, assumptions, approved messages, outputs, outcomes and impact remain distinct.",
+  "Campaign outcome and learner competence are reported separately, and more than one route may be defensible.",
+  "Provisional and unreviewed professional material never produces authoritative scoring.",
 ]
 
 [implementation-policy]
-allowed = ["Rust", "Idris2", "Zig", "Scheme", "Shell", "Just", "AsciiDoc", "Markdown"]
-forbidden = ["Node.js", "npm"]
+allowed = ["Zig", "Idris2", "Scheme", "Shell", "Just", "AsciiDoc", "Markdown", "a2ml"]
+forbidden = ["Python", "Go", "Nix", "AGPL"]
 
 [golden-path]
 smoke-test-command = [
-  "just test",
-  "just quality",
+  "zig build test",
+  "zig build run -- golden",
+  "bash tools/validate-scenario.sh",
+  "bash tools/test-scenario-boundary.sh",
 ]
-
 success-criteria = [
-  "Core tests pass",
-  "Quality gates pass",
-  "No unresolved critical security findings",
+  "Native event, route and assessment tests pass",
+  "All implemented golden routes replay deterministically",
+  "Scenario structure and claim boundaries pass",
+  "All planted scenario-boundary defects are rejected",
 ]
-
-[satellite-policy]
-must-pin-upstream = true
-must-declare-authority = true
-must-have-anchor = true
-must-have-golden-path = true
 
 [semantic-authority-files]
-language-spec = "SPECIFICATION.md"
-formal-proofs = "docs/proofs/PROOFS.adoc"
-type-theory = "docs/theory/THEORY.adoc"
-algorithms = "docs/theory/ALGORITHMS.adoc"
+product-contract = "docs/foundation/foundation-spec-v0.1.adoc"
+architecture = "docs/architecture/system-architecture.adoc"
+assessment-limitations = "docs/assessment/validity-limitations.adoc"
+known-debt = "docs/KNOWN-DEBT.adoc"

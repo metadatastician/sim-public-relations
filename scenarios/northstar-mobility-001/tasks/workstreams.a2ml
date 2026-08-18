@@ -1,0 +1,44 @@
+# SPDX-License-Identifier: CC-BY-SA-4.0
+[metadata]
+project = "sim-public-relations"
+version = "0.1.0"
+
+[[workstream]]
+id = "brief-and-account-hygiene"
+initial = "active"
+outputs = ["brief-clarification", "approval-map", "decision-log"]
+
+[[workstream]]
+id = "research-and-listening"
+initial = "available"
+outputs = ["source-log", "research-note", "uncertainty-record"]
+
+[[workstream]]
+id = "stakeholders-and-contacts"
+initial = "available"
+outputs = ["stakeholder-map", "contact-record"]
+
+[[workstream]]
+id = "objectives-plan-and-measurement"
+initial = "blocked-by-brief"
+outputs = ["objectives-and-measures", "channel-plan"]
+
+[[workstream]]
+id = "content-and-editorial"
+initial = "blocked-by-plan"
+outputs = ["announcement", "pitch", "accessible-summary", "q-and-a"]
+
+[[workstream]]
+id = "approval-and-delivery"
+initial = "blocked-by-content"
+outputs = ["approval-record", "distribution-record"]
+
+[[workstream]]
+id = "enquiry-and-issue-response"
+initial = "scheduled"
+outputs = ["enquiry-response", "recommendation-update", "correction"]
+
+[[workstream]]
+id = "evaluation-and-reflection"
+initial = "blocked-by-submission"
+outputs = ["evaluation-note", "reflection", "handover"]

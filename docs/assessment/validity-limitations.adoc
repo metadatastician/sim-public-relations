@@ -1,0 +1,36 @@
+// SPDX-License-Identifier: CC-BY-SA-4.0
+= Assessment Validity and Limitations
+:toc: left
+
+== What a run can support
+
+A run can support a bounded claim that a learner performed specified actions in
+a named fictional scenario, under recorded support and tool conditions, and
+that reviewers observed evidence relevant to specified competencies.
+
+== What a run cannot support
+
+It cannot by itself establish performance with real clients, colleagues,
+journalists or communities; sustained performance over employment; knowledge
+of every applicable law or code; suitability for a particular role; or the
+identity and integrity of an unsupervised learner.
+
+== Validity threats
+
+* scenario familiarity or memorisation;
+* writing fluency masking weak judgement;
+* inaccessible timing or interface effects;
+* cultural or class-coded assumptions in tone scoring;
+* unequal access to paid AI systems or prior industry networks;
+* a model route becoming a hidden one-correct-answer key;
+* reviewers inferring personal traits from bounded work;
+* automated evaluation accepting plausible but unsupported prose; and
+* portfolio selection hiding retries, support or adverse observations.
+
+== Controls
+
+Use parallel scenarios, transfer tasks, event-linked evidence, diverse
+practitioner and early-career review, disclosed support/tool conditions,
+accessibility accommodation, reviewer calibration and periodic adverse-impact
+analysis. Never score accent, prestige vocabulary, personal follower count,
+existing journalist relationships or unpaid real-world access.

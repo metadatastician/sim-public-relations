@@ -1,64 +1,75 @@
 # SPDX-License-Identifier: MPL-2.0
 # Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
 #
-# STATE.a2ml — Project state checkpoint (META-TEMPLATE)
-#
-# This is the STATE file for rsr-template-repo itself.
-# When consumed by a new project, replace {{PLACEHOLDER}} tokens
-# and customize sections below for the target project.
+# STATE.a2ml — Honest Phase A checkpoint for PR Practice Lab.
 
 [metadata]
-project = "rsr-template-repo"
-version = "0.2.0"
-last-updated = "2026-02-28"
-status = "active"  # active | paused | archived
+project = "sim-public-relations"
+version = "0.1.0-phase-a"
+last-updated = "2026-08-18"
+status = "active"
 
 [project-context]
-name = "rsr-template-repo"
-purpose = "Canonical RSR-compliant repository template providing scaffolding for all hyperpolymath projects — including CI/CD, AI manifests, ABI/FFI standards, container ecosystem, and governance infrastructure."
-completion-percentage = 95
+name = "PR Practice Lab"
+purpose = "A fictional public-relations and communications practice simulator that records evidence-linked professional decisions under uncertainty and time pressure."
+current-scope = "One authored scenario, four implemented deterministic golden routes, a provisional competency/rubric model, a Zig replay kernel and source-side hidden-reality boundary canaries."
+completion-percentage = 10
 
 [position]
-phase = "maintenance"      # design | implementation | testing | maintenance | archived
-maturity = "production"    # experimental | alpha | beta | production | lts
+phase = "implementation"
+maturity = "experimental"
+visibility = "public repository; no release issued"
+estate = "metadatastician"
+jurisdiction = "Initial UK professional-reference context; provisional and unreviewed"
 
-[route-to-mvp]
-milestones = [
-  { name = "Phase 0: Core scaffolding (justfile, CI/CD, .machine_readable)", completion = 100 },
-  { name = "Phase 1: ABI/FFI standard (Idris2/Zig templates)", completion = 100 },
-  { name = "Phase 1b: AI Gatekeeper Protocol (0-AI-MANIFEST.a2ml)", completion = 100 },
-  { name = "Phase 1c: TOPOLOGY.md standard and guide", completion = 100 },
-  { name = "Phase 1d: Maintenance gate (axes, checklist, approach)", completion = 100 },
-  { name = "Phase 1e: Trustfile / contractiles", completion = 100 },
-  { name = "Phase 2: Container ecosystem templates (stapeln)", completion = 100 },
-  { name = "Phase 3: Multi-forge sync hardening", completion = 0 },
-  { name = "Phase 4: Guix reproducible shells", completion = 50 },
+[implemented]
+components = [
+  "product foundation, learning model, competency framework and validity limitations",
+  "Northstar Mobility fictional scenario with incomplete learner evidence and hidden authored reality",
+  "plural route declarations and event-linked provisional rubric mapping",
+  "deterministic Zig replay kernel with four implemented golden routes",
+  "competency threshold reported separately from campaign consequence",
+  "critical integrity failure that cannot be averaged away",
+  "source-side hidden-reality validator with clean, leak, vacuity and false-employment canaries",
+]
+
+[not-implemented]
+components = [
+  "interactive learner inbox and workbench",
+  "persistent local run storage",
+  "facilitator or mentor review workflow",
+  "evidence-passport schema and export",
+  "packaged, binary, runtime, prompt and side-channel hidden-truth isolation",
+  "accessibility conformance and accommodation tests",
+  "professionally reviewed authority pack or validated assessment",
+  "pilot evidence, calibration, transfer study or adverse-impact analysis",
 ]
 
 [blockers-and-issues]
-# No active blockers
+issues = [
+  { id = "PROFESSIONAL-VALIDATION", severity = "critical", notes = "The scenario, authority interpretations and rubric are provisional and unreviewed. Engineering cannot close this; competent external reviewers and pilot evidence are required." },
+  { id = "HIDDEN-TRUTH-CHANNELS", severity = "high", notes = "The current validator covers source-side exact tokens only. Packaged artefacts, binaries, runtime channels, prompts and side channels remain untested." },
+  { id = "ACCESSIBILITY-EVIDENCE", severity = "high", notes = "Accessibility is a product invariant but no interactive interface or conformance/accommodation test exists yet." },
+  { id = "TEMPLATE-RESIDUE", severity = "medium", notes = "Core product and arrival identity files are converted, but inherited RSR scaffold and placeholders remain outside the Phase A surface and require deliberate audit." },
+]
+
+[test-status]
+native = "green: zig build test and four deterministic golden replays on Zig 0.16.0"
+scenario-validator = "green: structure, plural routes, claim boundary and five derived hidden-truth tokens"
+boundary-canaries = "green: 4/4 (clean pass plus three seeded defects rejected)"
+notes = "Established by live commands in the 2026-08-18 Phase A publication session. The scope is limited to the instruments named here and in the anchor golden path."
 
 [critical-next-actions]
 actions = [
-  "Container templates complete — test with `just container-init`",
-  "Validate container templates across wolfi-base and static Chainguard images",
-  "Harden multi-forge sync for GitLab/Bitbucket mirroring edge cases",
-  "Expand Guix development shell templates",
+  "Build the interactive local-first learner shell without exposing hidden reality.",
+  "Add persistence and an inspectable, deletable run record.",
+  "Extend hidden-truth canaries across packages, binaries, runtime and AI prompt channels.",
+  "Obtain practitioner, educator, accessibility and early-career review before authoritative assessment claims.",
+  "Audit and adapt or remove inherited RSR scaffold outside the product surface.",
 ]
 
 [maintenance-status]
-last-run-utc = "never"
-last-report = "docs/reports/maintenance/latest.json"
-last-result = "unknown"  # unknown | pass | warn | fail
+last-run-utc = "2026-08-18T12:30:06Z"
+last-result = "pass"
 open-warnings = 0
 open-failures = 0
-
-[ecosystem]
-part-of = ["RSR Framework", "stapeln ecosystem"]
-depends-on = ["stapeln", "selur-compose", "cerro-torre", "svalinn", "vordr", "k9-svc"]
-
-# ---------------------------------------------------------------------------
-# NOTE FOR CONSUMERS: When using this template to create a new repo, reset
-# the fields above to your project's values and replace all {{PLACEHOLDER}}
-# tokens. The milestones above describe the TEMPLATE's evolution, not yours.
-# ---------------------------------------------------------------------------

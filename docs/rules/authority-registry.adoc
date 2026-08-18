@@ -1,0 +1,65 @@
+// SPDX-License-Identifier: CC-BY-SA-4.0
+= Professional Reference Registry
+:toc: left
+
+== Status
+
+The initial pack is `uk-pr-practice-provisional@0.1.0`, accessed 2026-08-17.
+Every interpretation is `UNREVIEWED`. The sources below inform authorship and
+debrief but do not make PR Practice Lab a CIPR, PRCA or AMEC product and cannot
+support accredited or authoritative scoring without separate review and
+permission where required.
+
+[cols="1,2,3,1",options="header"]
+|===
+|ID |First-party source |Use in the provisional model |Status
+
+|`cipr-code`
+|https://cipr.co.uk/CIPR/CIPR/About_Us/Code_and_professional_conduct.aspx[CIPR — Code and professional conduct]
+|Integrity, accuracy, representation, conflicts, transparent and accountable AI
+use, verification, public support, measurement and limits of PR.
+|UNREVIEWED
+
+|`cipr-foundation`
+|https://cipr.co.uk/CIPR/Learn_Develop/Qualifications/Foundation.aspx[CIPR — Public Relations and Communication Foundation]
+|Entry-level breadth: organisational purpose, integrated disciplines, audiences,
+messages, channels and ethical use of new technology.
+|UNREVIEWED
+
+|`cipr-recruiting`
+|https://cipr.co.uk/common/Uploaded%20files/Policy/Recruiting%20public%20relations%20staff/11694%20CIPR_Recruitment%20brochure_v5.pdf[CIPR — Recruiting for public relations roles]
+|Provisional entry-level skill and knowledge horizon; not copied as a scoring
+instrument.
+|UNREVIEWED
+
+|`prca-code-2025`
+|https://www.prca.global/sites/default/files/PRCA%20Members%20code%20of%20conduct.pdf[PRCA — Code of Conduct for Members, updated 12 September 2025]
+|Honesty, fair dealing, professional standards, representation and conduct.
+|UNREVIEWED
+
+|`amec-ief`
+|https://amecorg.com/amecframework/[AMEC — Integrated Evaluation Framework]
+|Planning from organisational and communication objectives through inputs,
+activities, outputs, out-takes, outcomes and impact.
+|UNREVIEWED
+
+|`amec-taxonomy`
+|https://amecorg.com/amecframework/home/supporting-material/taxonomy/[AMEC — Evaluation taxonomy]
+|Distinctions between stages and evidence types; iterative evaluation and
+attribution limitations.
+|UNREVIEWED
+|===
+
+== Interpretation controls
+
+. Store a source URL, access date, effective/review date where known, quoted
+  clause locator and local interpretation identifier.
+. Do not score directly from a source until a competent reviewer approves the
+  interpretation and its scenario application.
+. Preserve historical packs for replay; do not silently apply current guidance
+  to an old run.
+. A missing, incompatible, revoked or mandatory-unreviewed pack invalidates any
+  claim of authoritative assessment.
+. Professional codes bind their members under their own terms. The simulator
+  teaches relevant reasoning but does not claim regulatory jurisdiction over
+  learners.

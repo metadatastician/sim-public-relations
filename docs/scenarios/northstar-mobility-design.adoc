@@ -1,0 +1,129 @@
+// SPDX-License-Identifier: CC-BY-SA-4.0
+= Northstar Mobility — Authored Scenario Design
+:toc: left
+
+== Identity
+
+----
+scenario_id: northstar-mobility-001
+title: Northstar Mobility Pilot Launch
+practice_context: small UK communications agency
+mode: guided-practice or assessment
+role: junior account practitioner
+----
+
+Everything in the scenario is fictional, including the organisation, agency,
+people, publications, community groups, local authority, messages and data.
+
+== Career-development purpose
+
+The scenario supplies the experience usually hidden behind “one year in an
+agency”: receive a brief, organise work, research context, maintain contact and
+stakeholder records, produce drafts, manage feedback and approvals, respond to
+an enquiry, monitor response, report against objectives and learn from a
+changing situation.
+
+Routine production matters, but it is embedded in judgement. A polished release
+cannot compensate for an untested claim, false endorsement, irrelevant pitch,
+missing approval or inaccessible information.
+
+== Premise
+
+Beacon & Rowe, a fictional small agency, is preparing the public launch of
+Northstar Mobility's community minibus-booking pilot in the fictional borough
+of Bellweather. Northstar describes the service as accessible and community-
+designed. The initial brief seeks local coverage, partner amplification and
+registrations on a modest budget within two working days.
+
+The initial pack contains a client email, rough brief, product fact sheet,
+stakeholder spreadsheet, draft executive quote and prior monitoring extract.
+It contains gaps and ambiguous claims but does not label their correct
+interpretation.
+
+== Workstreams
+
+Brief and account hygiene::
+Clarify purpose, scope, role, deliverables, decisions, deadlines, budget,
+confidentiality, AI policy and approval path.
+
+Research and listening::
+Build a source log; review the fictional transport context, prior commitments,
+community concerns and accessible-communications needs; request missing
+research proportionately.
+
+Stakeholders and contacts::
+Distinguish affected stakeholders from target audiences, repair the supplied
+records, prioritise relevant fictional contacts and record relationship context.
+
+Objectives, plan and measurement::
+Translate business desires into communication objectives, baseline, activities,
+outputs, out-takes and outcomes; state what cannot be attributed.
+
+Content and channels::
+Draft and revise a release, pitch, web copy, social copy, internal briefing,
+Q&A, accessible summary and holding material. Maintain one factual spine while
+adapting form.
+
+Approvals and delivery::
+Route claims and assets to the right fictional approvers, record changes,
+communicate blockers and decide what can safely proceed.
+
+Enquiry and issue response::
+Handle a journalist's evidence-based question and an affected stakeholder's
+accessibility concern; listen, verify, escalate and update recommendations.
+
+Evaluation and reflection::
+Classify fictional results honestly, correct duplicates or weak sentiment
+inference, report against objectives and reflect on the decision path.
+
+== AI task policy
+
+The baseline run permits AI for ideation and variants using only disclosed,
+non-personal scenario material. It prohibits entering the raw contact record,
+unreleased personal statements or hidden facilitator material. Material use is
+declared and every factual assertion is checked against disclosed sources.
+
+An alternate `AI-review` run provides a plausible automated draft containing a
+fabricated local statistic, an invented endorsement and inaccessible image
+copy. The learner's task is to find, explain and correct the defects.
+
+== Stable reality and variable consequences
+
+Historical scenario facts never change with the learner's choice. Consequences
+vary through logical time, evidence requests, stakeholder listening, approvals,
+contact relevance, factual accuracy, accessibility, response handling and the
+decision to launch, narrow, pause or reschedule activity.
+
+== Defensible routes
+
+`proceed-with-corrections`::
+Narrow unsupported wording, obtain the required approvals, publish the verified
+core material and schedule unresolved work separately.
+
+`stage-the-launch`::
+Proceed with low-risk owned/internal preparation while holding earned outreach
+until claims and stakeholder questions are resolved.
+
+`pause-and-replan`::
+Recommend a short pause where the unresolved claim or accessibility issue is
+material, communicate the reason and preserve a revised path to launch.
+
+No route is automatically correct. Timing, disclosed evidence, mitigation and
+quality of counsel determine defensibility.
+
+== Assessment hooks
+
+The scenario rewards relevant questions, source-linked claims, honest
+uncertainty, specific objectives, meaningful measures, accessible work,
+disciplined approval, relevant contact handling, correction and respectful
+stakeholder response. It does not reward maximal output volume, flattering the
+client, blanket distribution, manufactured enthusiasm or confident invented
+detail.
+
+== Content and learner safety
+
+No task contacts a real person or publishes to a live service. Content is
+watermarked. The fictional accessibility challenge is reviewed with disabled
+practitioners and users before release; it must not use affected people merely
+as a moral test for the learner. Time-pressure accommodations preserve the
+ordering and prioritisation construct without penalising access needs.

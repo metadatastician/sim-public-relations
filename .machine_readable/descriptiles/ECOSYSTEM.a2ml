@@ -1,45 +1,37 @@
 # SPDX-License-Identifier: MPL-2.0
-# ECOSYSTEM.a2ml — Ecosystem position (META-TEMPLATE)
+# Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
 #
-# This is the ECOSYSTEM file for rsr-template-repo itself. It records the
-# TEMPLATE's own position in the estate. When consumed by a new project,
-# replace these fields with the target project's ecosystem position and
-# related projects (see the NOTE FOR CONSUMERS at the bottom).
+# ECOSYSTEM.a2ml — Ecosystem position for PR Practice Lab.
 
 [metadata]
-project = "rsr-template-repo"
-ecosystem = "hyperpolymath"
+project = "sim-public-relations"
+ecosystem = "metadatastician"
+last-updated = "2026-08-18"
 
-[position]
-type = "repository-template"
-purpose = "Canonical RSR-compliant repository template: scaffolding (CI/CD, AI manifests, ABI/FFI standards, container ecosystem, governance) that new hyperpolymath projects are instantiated from."
-# IS-NOT — anti-identity (the boundary-erosion guard; each line is a real past confusion)
+[product]
+type = "application"
+purpose = "Evidence-driven, time-aware fictional practice for people developing public-relations and communications judgement, with event-linked assessment separated from campaign consequence."
 what-this-is-not = [
-  "a project in its own right",
-  "Scaffoldia (the full-featured repo designer)",
-  "standards (the canon source this template operationalises)",
+  "an agency, employer or live client service",
+  "employment, a placement or supervised professional experience",
+  "a professional qualification, accredited CPD or guarantee of competence",
+  "a live-contact, media-database or social-publishing tool",
+  "authoritative professional scoring (the rule pack and rubric are provisional and unreviewed)",
+  "rsr-template-repo (the scaffold from which this repository began)",
+  "a complete learner product today (the current UI is a replay CLI)",
 ]
 
 [pipeline]
-position = "foundation"
-chain = "standards → rsr-template-repo → (every estate repo)"
-notes = "rsr-template-repo turns the RSR standard into runnable scaffolding. New repos are created from it via `just repo-init`, which substitutes the {{PLACEHOLDER}} tokens."
-coordination = "standards"
+position = "experimental vertical slice"
+chain = "professional references → authored fictional scenario → deterministic event kernel → evidence-linked debrief"
+notes = "The current repository implements the product foundation, one scenario and a deterministic native replay slice."
+coordination = "metadatastician"
 
 [related-projects]
 projects = [
-  { name = "standards", relationship = "standard-source", notes = "Defines the RSR standard, contractile canon, and policies that this template operationalises." },
-  { name = "stapeln", relationship = "build-tooling", notes = "Layer-based container build system; the template ships stapeln.toml scaffolding." },
-  { name = "selur-compose", relationship = "build-tooling", notes = "Service composition; the template ships selur-compose.toml scaffolding." },
-  { name = "k9-svc", relationship = "validation-tooling", notes = "Runs the self-validating k9.ncl checks (.machine_readable/self-validating/)." },
-  { name = "cerro-torre", relationship = "signing-tooling", notes = "Container/image signing provider referenced by the container scaffolding." },
-  { name = "svalinn", relationship = "verification-tooling", notes = "Supply-chain verification referenced by the container scaffolding." },
-  { name = "vordr", relationship = "verification-tooling", notes = "Build/artifact verification referenced by the container scaffolding." },
+  { name = "metadatastician/sim-insolvency", relationship = "design-lineage", notes = "Source of the evidence-driven epistemic and plural-route assessment pattern; no runtime dependency." },
+  { name = "hyperpolymath/standards", relationship = "repository-standards", notes = "Canonical estate-wide repository and publication policies." },
 ]
 
-# ---------------------------------------------------------------------------
-# NOTE FOR CONSUMERS: When using this template to create a new repo, replace
-# the project/purpose above and rewrite [related-projects] to describe YOUR
-# project's actual ecosystem. The entries above describe the TEMPLATE's own
-# position, not yours.
-# ---------------------------------------------------------------------------
+[boundaries]
+notes = "The sharpest internal boundary is scenarios/*/reality/: its content must never reach learner artefacts or learner-controlled AI. The sharpest external boundary is representational: every output remains fictional simulated practice, never a credential or employment claim."

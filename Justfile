@@ -13,17 +13,19 @@
 set shell := ["bash", "-uc"]
 set dotenv-load := true
 set positional-arguments := true
+export ZIG_GLOBAL_CACHE_DIR := ".cache/zig-global"
+export ZIG_LOCAL_CACHE_DIR := ".cache/zig-local"
 
 # Import auto-generated contractile recipes (must-check, trust-verify, etc.)
 # Re-generate with: contractile gen-just
 import? "build/contractile.just"
 
 # Project metadata — customize these
-project := "rsr-template-repo"
-OWNER := "hyperpolymath"
-REPO := "rsr-template-repo"
+project := "sim-public-relations"
+OWNER := "metadatastician"
+REPO := "sim-public-relations"
 version := "0.1.0"
-tier := "infrastructure"  # 1 | 2 | infrastructure
+tier := "2"  # 1 | 2 | infrastructure
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # DEFAULT & HELP
@@ -87,24 +89,11 @@ import? "build/just/assess.just"
 
 # Build the project (debug mode)
 build *args:
-    @echo "Building {{project}} (debug)..."
-    # TODO: Replace with your build command
-    # Examples:
-    #   cargo build {{args}}                    # Rust
-    #   mix compile {{args}}                    # Elixir
-    #   zig build {{args}}                      # Zig
-    #   deno task build {{args}}                # Deno/ReScript
-    @echo "Build complete"
+    zig build {{args}}
 
 # Build in release mode with optimizations
 build-release *args:
-    @echo "Building {{project}} (release)..."
-    # TODO: Replace with your release build command
-    # Examples:
-    #   cargo build --release {{args}}
-    #   MIX_ENV=prod mix compile {{args}}
-    #   zig build -Doptimize=ReleaseFast {{args}}
-    @echo "Release build complete"
+    zig build -Doptimize=ReleaseSafe {{args}}
 
 # Build and watch for changes (requires entr or similar)
 build-watch:
@@ -136,19 +125,9 @@ clean-all: clean
 
 # Run all tests
 test *args:
-    #!/usr/bin/env bash
-    # A check that cannot fail is not a check. This recipe MUST be replaced at
-    # mint with the project's real test command; until then it fails loudly
-    # rather than printing "Tests passed!" over an empty run.
-    #
-    # Replace this whole body with one of:
-    #   cargo test --workspace {{args}}
-    #   mix test {{args}}
-    #   zig build test {{args}}
-    #   deno test {{args}}
-    echo "FAIL: \`just test\` has not been wired to a real test command yet." >&2
-    echo "      Edit the 'test' recipe in the Justfile before relying on this gate." >&2
-    exit 1
+    zig build test {{args}}
+    bash tools/validate-scenario.sh {{args}}
+    bash tools/test-scenario-boundary.sh
 
 # Run tests with verbose output
 test-verbose:
@@ -272,14 +251,12 @@ lint:
 # ═══════════════════════════════════════════════════════════════════════════════
 
 # Run the application
-run *args: build
-    # TODO: Replace with your run command
-    echo "Run not configured yet"
+run *args:
+    zig build run -- {{args}}
 
 # Run with verbose output
-run-verbose *args: build
-    # TODO: Replace with verbose run command
-    echo "Run not configured yet"
+run-verbose *args:
+    zig build run -- {{args}}
 
 # Install to user path
 install: build-release

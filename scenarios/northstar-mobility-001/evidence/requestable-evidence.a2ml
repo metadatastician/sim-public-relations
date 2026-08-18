@@ -1,0 +1,52 @@
+# SPDX-License-Identifier: CC-BY-SA-4.0
+[metadata]
+project = "sim-public-relations"
+version = "0.1.0"
+
+[[evidence]]
+id = "client-kickoff-notes"
+request = "brief-and-approval-context"
+available-at = 30
+visible-characterisation = "working-notes-not-approval"
+
+[[evidence]]
+id = "partner-email-chain"
+request = "brief-and-approval-context"
+available-at = 60
+visible-characterisation = "mixed-comments-require-interpretation"
+
+[[evidence]]
+id = "service-research-summary"
+request = "claim-substantiation"
+available-at = 60
+visible-characterisation = "method-and-scope-must-be-checked"
+
+[[evidence]]
+id = "accessibility-review-note"
+request = "accessibility-evidence"
+available-at = 90
+visible-characterisation = "review-limited-in-scope"
+
+[[evidence]]
+id = "community-meeting-note"
+request = "stakeholder-listening-record"
+available-at = 90
+visible-characterisation = "views-not-endorsement"
+
+[[evidence]]
+id = "registration-baseline"
+request = "measurement-baseline"
+available-at = 30
+visible-characterisation = "baseline-not-target"
+
+[[evidence]]
+id = "prior-campaign-report"
+request = "measurement-baseline"
+available-at = 60
+visible-characterisation = "different-campaign-no-direct-attribution"
+
+[[evidence]]
+id = "journalist-enquiry"
+request = "enquiry-context"
+available-at = 180
+visible-characterisation = "questions-not-allegations"

@@ -1,0 +1,47 @@
+# SPDX-License-Identifier: CC-BY-SA-4.0
+[metadata]
+project = "sim-public-relations"
+version = "0.1.0"
+
+[scenario]
+id = "northstar-mobility-001"
+title = "Northstar Mobility Pilot Launch"
+version = "0.1.0"
+role = "junior-account-practitioner"
+watermark = "FICTIONAL SIMULATION — NOT LIVE CLIENT WORK OR EMPLOYMENT EXPERIENCE"
+
+[premise]
+summary = "A small fictional agency prepares a community-transport pilot launch from an incomplete brief, with two working days and a modest budget."
+
+[initial-disclosures]
+ids = [
+  "ev-client-email",
+  "ev-rough-brief",
+  "ev-product-fact-sheet",
+  "ev-stakeholder-record",
+  "ev-executive-quote",
+  "ev-prior-monitoring",
+]
+
+[practice-routes]
+ids = [
+  "proceed-with-corrections",
+  "stage-the-launch",
+  "pause-and-replan",
+]
+
+[learner-outputs]
+ids = [
+  "brief-clarification",
+  "source-log",
+  "stakeholder-map",
+  "contact-record",
+  "objectives-and-measures",
+  "channel-plan",
+  "release-or-announcement",
+  "targeted-pitch",
+  "accessible-summary",
+  "enquiry-response",
+  "evaluation-note",
+  "reflection",
+]

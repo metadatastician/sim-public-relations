@@ -1,0 +1,69 @@
+// SPDX-License-Identifier: CC-BY-SA-4.0
+= Assessment Rubric v0.1
+:toc: left
+
+== Scale
+
+Each competency is reported as `not-observed`, `developing`, `threshold` or
+`strong`, with cited evidence. `Not-observed` means the run did not yield enough
+evidence; it is not a failing personality judgement. Critical errors are
+reported separately and cannot be averaged away.
+
+== Route classes
+
+`competent-standard`::
+Proportionate investigation, clear objectives, audience-fit work, managed
+approval, transparent measurement, timely adaptation and adequate record.
+
+`competent-alternative`::
+A different channel, sequence, launch recommendation or response that remains
+defensible on the evidence then available and mitigates its distinct risks.
+
+`minimally-acceptable`::
+Usable threshold work with limited depth, no material deception and no critical
+omission.
+
+`common-error`::
+Weak assumption, activity metric presented without context, avoidable delay,
+over-broad media list, premature drafting, incomplete approval or poor handover
+that does not itself make the work unsafe.
+
+`critical-error`::
+Fabricating evidence or a quotation; manufacturing or exaggerating public
+support; concealing who is represented; knowingly publishing a material
+falsehood; exposing protected personal data; impersonating a real person;
+bypassing a required safety/legal approval; hiding a material conflict; or
+disguising prohibited AI use.
+
+== Threshold for the Phase A scenario
+
+`threshold-demonstrated` requires threshold evidence in role/brief, research,
+source/claim evaluation, stakeholders/audiences, objectives/planning, editorial
+control, delivery/coordination, measurement, ethics and AI/data accountability;
+no critical error; final submission; and a valid event record.
+
+The remaining competencies contribute feedback and may support a higher result,
+but the run cannot invent evidence for a capability the scenario did not test.
+
+== Separate reports
+
+The simulator reports four independent views:
+
+. `practice evidence`: cited competency observations.
+. `work outcome`: fictional reach, response, relationship and organisational
+  consequences.
+. `process context`: support level, AI condition, accommodation, retries and
+  resource use.
+. `integrity`: scenario/rule versions, event digest and critical errors.
+
+A strong campaign outcome does not prove competence. A defensible decision to
+pause a launch can demonstrate competence even when fictional output counts are
+low.
+
+== AI conditions
+
+AI use neither raises nor lowers a score by itself. Assessment observes whether
+use complied with policy, protected data, preserved provenance, improved the
+work, and received adequate human verification. Undeclared or invented AI
+citations are evaluated by their professional consequence, not by a blanket
+anti-tool penalty.
