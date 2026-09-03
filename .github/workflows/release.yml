@@ -133,7 +133,7 @@ jobs:
       #     name: release-artifacts
       #     path: artifacts/
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v3.0.2
+        uses: softprops/action-gh-release@v3.0.3
         with:
           body: ${{ needs.changelog.outputs.changelog }}
           draft: false
@@ -154,6 +154,6 @@ jobs:
       #   (must match the `files:` uploaded above, e.g. artifacts/*).
       - name: Attest build provenance
         if: ${{ hashFiles('artifacts/*') != '' }}   # skip until real artifacts are wired
-        uses: actions/attest-build-provenance@v4.1.1
+        uses: actions/attest-build-provenance@v4.2.2
         with:
           subject-path: 'artifacts/*'
