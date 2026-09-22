@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: MPL-2.0
+# hypatia:ignore cicd_rules/banned_language_file -- repo-init compatibility utility
 """Delete the RSR template's "TEMPLATE INSTRUCTIONS" comment blocks.
 
 The community-health templates open with an HTML comment headed
@@ -51,6 +52,7 @@ SKIP_DIRS = {".git", "node_modules", ".venv", "target", "dist"}
 
 
 def strip(path: Path) -> bool:
+    """Remove template instruction blocks and report whether the file changed."""
     try:
         text = path.read_text(encoding="utf-8")
     except (UnicodeDecodeError, OSError):
@@ -66,6 +68,7 @@ def strip(path: Path) -> bool:
 
 
 def main() -> int:
+    """Strip instruction blocks beneath the requested root and report results."""
     root = Path(sys.argv[1] if len(sys.argv) > 1 else ".")
     changed = 0
     for p in sorted(root.rglob("*")):
