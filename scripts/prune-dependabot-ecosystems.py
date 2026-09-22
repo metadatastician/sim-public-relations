@@ -40,6 +40,7 @@ ALWAYS_DROP = {"nix"}
 
 
 def main() -> int:
+    """Prune the configured ecosystems to the explicitly retained set."""
     if len(sys.argv) < 3:
         sys.exit(__doc__)
     path = Path(sys.argv[1])
