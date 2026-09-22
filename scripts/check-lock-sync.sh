@@ -77,7 +77,8 @@ if [ "${#WORKFLOWS[@]}" -eq 0 ]; then
 fi
 
 read -r -d '' PROG <<'AWK' || true
-# owner/repo[/subpath...]@ref  ->  owner/repo@ref   ("" if not an external ref)
+# Normalize an external owner/repo[/subpath...]@ref to owner/repo@ref.
+# Return "" for local references or values without an owner, repository, or ref.
 function norm(r,   at, path, ref, n, parts) {
   at = 0
   for (n = length(r); n > 0; n--) { if (substr(r, n, 1) == "@") { at = n; break } }
@@ -96,6 +97,7 @@ function norm(r,   at, path, ref, n, parts) {
 # SUCCESS while codeql.yml at the SAME commit was startup_failure. A same-commit
 # control, so the case difference is provably not what kills a run.
 # The REF is NOT folded: git tags and branch names are case-sensitive.
+# Values without an @ separator are lowercased in full.
 function ck(r,   at, s) {
   at = 0
   for (s = length(r); s > 0; s--) { if (substr(r, s, 1) == "@") { at = s; break } }
