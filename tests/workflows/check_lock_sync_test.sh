@@ -166,10 +166,15 @@ write_workflow ci.yml $'jobs:\n  test:\n    steps:\n      - uses: acme/composite
 write_lock $'version: '\''v0.0.2'\''\nworkflows:\n    '\''.github/workflows/ci.yml'\'':\n        - '\''acme/composite@v1'\''\ndependencies:\n    '\''acme/composite@v1'\'':\n        ref: '\''v1'\''\n        uses:\n            - '\''acme/leaf@sha123'\''\n    '\''acme/leaf@sha123'\'':\n        ref: '\''sha123'\'''
 expect_pass "accepts a transitively closed dependency graph" "0 dangling edges"
 
-new_case corrupt-local
-write_workflow ci.yml $'jobs:\n  test:\n    steps:\n      - uses: $/local/action'
+new_case self-repository
+write_workflow ci.yml $'jobs:\n  test:\n    steps:\n      - uses: $/local/action\n  reusable:\n    uses: $/.github/workflows/reusable.yml'
 write_lock $'version: '\''v0.0.2'\''\nworkflows:\n    '\''.github/workflows/ci.yml'\'': []\ndependencies:'
-expect_fail "rejects actions-lock local path corruption" "invalid local-action rewrite (uses: $/...)"
+expect_pass "accepts self-repository action and workflow references" "0 dangling edges"
+
+new_case corrupt-local
+write_workflow ci.yml $'jobs:\n  test:\n    steps:\n      - uses: $/local/action@v1'
+write_lock $'version: '\''v0.0.2'\''\nworkflows:\n    '\''.github/workflows/ci.yml'\'': []\ndependencies:'
+expect_fail "rejects self-repository references with a ref suffix" "invalid local-action rewrite (uses: $/...)"
 
 new_case ref-case
 write_workflow ci.yml $'jobs:\n  test:\n    steps:\n      - uses: Acme/Widget@Release'
