@@ -27,7 +27,7 @@ write_workflow() {
 }
 
 write_lock() {
-  printf '%s\n' "$1" > "${case_dir}/actions.lock"
+  printf '%b\n' "$1" > "${case_dir}/actions.lock"
 }
 
 run_case() {

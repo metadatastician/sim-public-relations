@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: MPL-2.0
+# hypatia:ignore cicd_rules/banned_language_file -- repo-init compatibility utility
 """Delete the RSR template's "TEMPLATE INSTRUCTIONS" comment blocks.
 
 The community-health templates open with an HTML comment headed

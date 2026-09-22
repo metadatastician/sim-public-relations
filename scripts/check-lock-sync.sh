@@ -5,12 +5,14 @@
 # workflow YAML, in BOTH directions (including job-level reusable-workflow refs),
 # AND that the lockfile is TRANSITIVELY CLOSED.
 #
-# Three clauses, each of which alone is insufficient:
+# Four clauses, each of which alone is insufficient:
 #
 #   1. every `uses:` in a workflow is locked under THAT workflow's own path;
 #   2. every lockfile entry is still referenced by its workflow (no orphans);
 #   3. every ref NAMED anywhere in the lockfile resolves to a top-level
 #      `dependencies:` record — the lockfile has no dangling edges.
+#   4. every workflow file has a lockfile key, including workflows with no
+#      `uses:` references.
 #
 # Clause 3 is not decoration. It is the clause that catches the failure mode that
 # clauses 1 and 2 are structurally blind to, and it was added only after that
@@ -38,7 +40,7 @@
 # job-level refs and will not backfill -> the developer hand-adds the workflows:
 # entry to get green -> no dependencies: record -> CI dies silently, gate green.
 #
-# Exit 0 only when all three clauses hold. Any violation exits 1. There is no
+# Exit 0 only when all four clauses hold. Any violation exits 1. There is no
 # warn-only mode: a desync means GitHub refuses to start the run, so it must fail
 # the job. A `::warning::` cannot fail a job and would be a vacuous gate.
 
@@ -70,11 +72,12 @@ if [ ! -f "$LOCK" ]; then
 fi
 
 shopt -s nullglob
-mapfile -t WORKFLOWS < <(printf '%s\n' "$WF_DIR"/*.yml "$WF_DIR"/*.yaml | sort -u)
+WORKFLOWS=("$WF_DIR"/*.yml "$WF_DIR"/*.yaml)
 if [ "${#WORKFLOWS[@]}" -eq 0 ]; then
   echo "check-lock-sync: FATAL: no workflow files under $WF_DIR" >&2
   exit 1
 fi
+mapfile -t WORKFLOWS < <(printf '%s\n' "${WORKFLOWS[@]}" | sort -u)
 
 read -r -d '' PROG <<'AWK' || true
 # owner/repo[/subpath...]@ref  ->  owner/repo@ref   ("" if not an external ref)

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: MPL-2.0
+# hypatia:ignore cicd_rules/banned_language_file -- repo-init compatibility utility
 """Prune .github/dependabot.yml to the ecosystems this project actually uses.
 
 The template ships every common ecosystem under the header "Covers common
