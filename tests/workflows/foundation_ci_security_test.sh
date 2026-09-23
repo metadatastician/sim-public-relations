@@ -92,7 +92,7 @@ expect_reject() {
 }
 
 workflow_refs() {
-  sed -n 's/^[[:space:]]*uses:[[:space:]]*\([^[:space:]#]*\).*/\1/p' "$1"
+  sed -nE 's/^[[:space:]]*(-[[:space:]]+)?uses:[[:space:]]*([^[:space:]#]*).*/\2/p' "$1"
 }
 
 checkout_step() {
