@@ -13,6 +13,36 @@ codeql_sha="cdf488f595d80d6e07e03d4674febd5ab45fa938"
 governance_sha="8f31a5a4ba591d544b65f91f6d78b136e07756f0"
 hypatia_sha="cc58c0cb23f73fc2019ce85a56a468e5248a93b3"
 scorecard_sha="8750b94ac1bbe8c51ad13fe106669b13478f0b62"
+lock_marker='# This workflow is managed by gh actions-lock.'
+
+# Keep this list scoped to the workflows marked as action-lock-managed by PR #26.
+lock_managed_workflows=(
+  boj-build.yml
+  codeql.yml
+  container-build.yml
+  dependabot-automerge.yml
+  dogfood-gate.yml
+  estate-rules.yml
+  governance.yml
+  guix-policy.yml
+  hypatia-scan.yml
+  label-triage.yml
+  labels.yml
+  mirror.yml
+  openssf-compliance.yml
+  pages.yml
+  quality.yml
+  release.yml
+  rhodibot.yml
+  runtime-policy.yml
+  scorecard.yml
+  secret-scanner.yml
+  security-policy.yml
+  sonarqube.yml
+  static-analysis-gate.yml
+  wellknown-enforcement.yml
+  workflow-linter.yml
+)
 
 passes=0
 total=0
@@ -138,10 +168,30 @@ validate_reusable() {
   fi
 }
 
+validate_lock_markers() {
+  local workflow first_line
+
+  for workflow in "$@"; do
+    if [ ! -f "${workflow}" ]; then
+      printf 'action-lock-managed workflow is missing: %s\n' "${workflow}" >&2
+      return 1
+    fi
+    first_line="$(sed -n '1p' "${workflow}")"
+    if [ "${first_line}" != "${lock_marker}" ]; then
+      printf 'action-lock marker must be the first line in %s\n' "${workflow}" >&2
+      return 1
+    fi
+  done
+}
+
 codeql="${root}/.github/workflows/codeql.yml"
 governance="${root}/.github/workflows/governance.yml"
 hypatia="${root}/.github/workflows/hypatia-scan.yml"
 scorecard="${root}/.github/workflows/scorecard.yml"
+lock_managed_paths=()
+for workflow in "${lock_managed_workflows[@]}"; do
+  lock_managed_paths+=("${root}/.github/workflows/${workflow}")
+done
 
 expect_accept 'CodeQL actions use the approved immutable pins and safe checkout' \
   validate_codeql "${codeql}"
@@ -151,6 +201,8 @@ expect_accept 'Hypatia calls the approved reusable workflow revision' \
   validate_reusable "${hypatia}" hypatia-scan-reusable.yml "${hypatia_sha}"
 expect_accept 'scorecard calls the approved reusable workflow revision' \
   validate_reusable "${scorecard}" scorecard-reusable.yml "${scorecard_sha}"
+expect_accept 'changed workflows put the action-lock marker on the first line' \
+  validate_lock_markers "${lock_managed_paths[@]}"
 
 # Negative fixtures prove the checks fail closed on the regressions this change
 # is intended to prevent, instead of merely matching the current files.
@@ -188,5 +240,12 @@ sed 's|governance-reusable.yml|scorecard-reusable.yml|' \
 expect_reject 'reusable callers reject a valid SHA on the wrong workflow path' \
   'unexpected reusable workflow reference' \
   validate_reusable "${scratch}/governance-wrong-workflow.yml" governance-reusable.yml "${governance_sha}"
+
+# The marker already appeared later in most workflows before this PR. Removing
+# the new first line proves that presence alone does not satisfy the contract.
+tail -n +2 "${codeql}" > "${scratch}/codeql-misplaced-lock-marker.yml"
+expect_reject 'action-lock marker is rejected when it is not the first line' \
+  'action-lock marker must be the first line' \
+  validate_lock_markers "${scratch}/codeql-misplaced-lock-marker.yml"
 
 printf 'PASS foundation CI security tests: %d/%d\n' "${passes}" "${total}"
