@@ -5,12 +5,14 @@
 # workflow YAML, in BOTH directions (including job-level reusable-workflow refs),
 # AND that the lockfile is TRANSITIVELY CLOSED.
 #
-# Three clauses, each of which alone is insufficient:
+# Four clauses, each of which alone is insufficient:
 #
 #   1. every `uses:` in a workflow is locked under THAT workflow's own path;
 #   2. every lockfile entry is still referenced by its workflow (no orphans);
 #   3. every ref NAMED anywhere in the lockfile resolves to a top-level
 #      `dependencies:` record — the lockfile has no dangling edges.
+#   4. every workflow file has a lockfile key, including workflows with no
+#      `uses:` references.
 #
 # Clause 3 is not decoration. It is the clause that catches the failure mode that
 # clauses 1 and 2 are structurally blind to, and it was added only after that
@@ -38,7 +40,7 @@
 # job-level refs and will not backfill -> the developer hand-adds the workflows:
 # entry to get green -> no dependencies: record -> CI dies silently, gate green.
 #
-# Exit 0 only when all three clauses hold. Any violation exits 1. There is no
+# Exit 0 only when all four clauses hold. Any violation exits 1. There is no
 # warn-only mode: a desync means GitHub refuses to start the run, so it must fail
 # the job. A `::warning::` cannot fail a job and would be a vacuous gate.
 
@@ -75,10 +77,10 @@ if [ "${#WORKFLOWS[@]}" -eq 0 ]; then
   echo "check-lock-sync: FATAL: no workflow files under $WF_DIR" >&2
   exit 1
 fi
+mapfile -t WORKFLOWS < <(printf '%s\n' "${WORKFLOWS[@]}" | sort -u)
 
 read -r -d '' PROG <<'AWK' || true
-# Normalize an external owner/repo[/subpath...]@ref to owner/repo@ref.
-# Return "" for local references or values without an owner, repository, or ref.
+# owner/repo[/subpath...]@ref  ->  owner/repo@ref   ("" if not an external ref)
 function norm(r,   at, path, ref, n, parts) {
   at = 0
   for (n = length(r); n > 0; n--) { if (substr(r, n, 1) == "@") { at = n; break } }
@@ -97,7 +99,6 @@ function norm(r,   at, path, ref, n, parts) {
 # SUCCESS while codeql.yml at the SAME commit was startup_failure. A same-commit
 # control, so the case difference is provably not what kills a run.
 # The REF is NOT folded: git tags and branch names are case-sensitive.
-# Values without an @ separator are lowercased in full.
 function ck(r,   at, s) {
   at = 0
   for (s = length(r); s > 0; s--) { if (substr(r, s, 1) == "@") { at = s; break } }
@@ -217,6 +218,33 @@ END {
     if (!found) { printf "FAIL %s\n     lockfile entry for a workflow file that does not exist\n", p; bad = 1 }
   }
 
+  # --- clause 4: COVERAGE. Every workflow FILE must have a key in the lockfile,
+  #     including one with no uses: at all - the value is then an empty list.
+  #     MEASURED 2026-09-22, single-variable flip on two independent repos:
+  #     hyperpolymath/verisimdb's lock-sync-gate.yml was startup_failure 7 times
+  #     running with ZERO uses: refs, and adding
+  #         '.github/workflows/lock-sync-gate.yml': []
+  #     flipped it to success; reproduced on hyperpolymath/blocky-writer, 2 of 2.
+  #     `gh actions-lock` already emits this empty-list form for other zero-uses:
+  #     workflows (labels.yml), so it is the generator's own convention, not ours.
+  #     Clauses 1-3 CANNOT catch this: they ask "is every uses: locked?", and a
+  #     workflow with no uses: satisfies them vacuously while GitHub still refuses
+  #     to start it. 13 repos passed clauses 1-3 with exactly this gap.
+  nunlisted = 0; unlisted = ""
+  for (i = 1; i < ARGC; i++) {
+    q = ARGV[i]; if (q == lockfile) continue
+    sub(/.*\//, "", q); q = ".github/workflows/" q
+    if (q in seen_path) continue
+    nunlisted++; unlisted = unlisted "\n       " q
+  }
+  if (nunlisted > 0) {
+    printf "FAIL actions.lock: UNLISTED WORKFLOWS\n"
+    printf "     %d workflow file(s) have no key in the lockfile. GitHub refuses such a\n", nunlisted
+    printf "     run at startup (jobs=0) even when the workflow has no uses: at all.\n"
+    printf "     The entry for a zero-uses: workflow is an empty list:%s\n", unlisted
+    bad = 1
+  }
+
   # --- clause 3: TRANSITIVE CLOSURE. Every ref named anywhere in the lockfile
   #     must resolve to a top-level dependencies: record. A dangling edge makes
   #     GitHub refuse the run at startup with jobs=0. ---
@@ -254,12 +282,17 @@ END {
     print "  3. Nested `uses:` entries must be bare OWNER/REPO@REF. A subpath pin such as"
     print "     github/codeql-action/upload-sarif@<sha> is REJECTED by the schema; collapse it"
     print "     to github/codeql-action@<sha>."
+    print "  4. For any UNLISTED WORKFLOWS above, add the path as a lockfile key. A workflow"
+    print "     with no uses: takes an empty list:  \x27.github/workflows/x.yml\x27: []"
+    print "     `gh actions-lock` has been observed to OMIT such a workflow entirely; that"
+    print "     omission is itself the defect, so re-running the tool may not add it."
     exit 1
   }
   printf "actions.lock is in sync and transitively closed:\n"
   printf "  * every uses: is locked under its own workflow path (job-level reusable refs included)\n"
   printf "  * every lockfile entry is still referenced\n"
   printf "  * every ref named in the lockfile resolves to a dependencies: record (0 dangling edges)\n"
+  printf "  * every workflow file has a lockfile key (zero-uses: workflows included)\n"
   if (nunref > 0)
     printf "  note: %d dependencies: record(s) are unreferenced - harmless, but prunable.\n", nunref
 }
