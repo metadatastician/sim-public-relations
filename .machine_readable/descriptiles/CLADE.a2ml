@@ -5,12 +5,16 @@
 
 [metadata]
 project = "sim-public-relations"
-last-updated = "2026-08-18"
+last-updated = "2026-09-29"
 
 [identity]
-# UUIDv5, URL namespace, derived from the canonical repository URL:
-#   uuidgen --sha1 --namespace @url --name "github.com/metadatastician/sim-public-relations"
-uuid = "3b9ae0bb-dfc2-561e-b9e7-a0bca5cd40be"
+# UUID v7 (RFC 9562), minted 2026-09-29 with a well-tested library v7 API per
+# hyperpolymath/standards docs/UUID-V7-ESTATE-STANDARD.adoc. UUIDs are opaque:
+# this value is allocated, NOT derived from the repository name, and MUST NOT
+# be recomputed. It replaced a URL-namespace UUIDv5 that had never been
+# registered anywhere (see [registry] below), so nothing external refers to
+# the old value and no alias is carried.
+uuid = "01a0ed2d-28fe-70cb-8aa6-462024f85795"
 primary-forge = "github"
 primary-owner = "metadatastician"
 canonical-name = "sim-public-relations"

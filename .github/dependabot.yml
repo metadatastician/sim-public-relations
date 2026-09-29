@@ -14,6 +14,15 @@ updates:
         patterns:
           - "*"
     open-pull-requests-limit: 2
+    ignore:
+      # github/codeql-action v4.38.1 is refused by GitHub at workflow startup
+      # (startup_failure, zero jobs) in tag AND SHA form, estate-wide —
+      # hyperpolymath/nexia-list#100. #28 bumped this repo onto it and killed
+      # CodeQL on main. Pin stays on v4.38.0 (same SHA standards uses) until a
+      # later release is verified to start. Exact version, not a range: a
+      # later patch that works must still be offered.
+      - dependency-name: "github/codeql-action"
+        versions: ["4.38.1"]
 
   # Rust/Cargo
   #

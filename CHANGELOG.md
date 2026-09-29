@@ -13,3 +13,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 <!-- Run: just changelog -->
 
 ## [Unreleased]
+
+### Fixed
+
+- CI: restore every workflow that GitHub had been refusing at startup since
+  #26/#28 (CodeQL, SonarQube, Governance, Hypatia, Scorecard, Mirror, Secret
+  Scanner): re-pin the `hyperpolymath/standards` reusable workflows to one
+  published commit (the three SHAs #26 wrote do not exist upstream), pin
+  `github/codeql-action` to v4.38.0 (4.38.1 is refused by GitHub estate-wide,
+  nexia-list#100) and exclude that version in Dependabot, and bring
+  `actions.lock` back into transitively-closed sync. Closes #23.
+- CI: put every workflow's SPDX header back on line 1 (a duplicated
+  `gh actions-lock` banner had displaced it), which un-breaks the Workflow
+  Security Linter.
+- Security: `dependabot-automerge.yml` no longer gates on `github.actor`
+  (spoofable; Hypatia RE008 critical) — it checks the PR author and that the
+  head branch lives in this repository.
+- Static Analysis Gate: the two Python mint helpers are replaced by the
+  upstream Rust ports (`scripts/*.rs` via `scripts/rust-tool.sh`), removing
+  the banned-language criticals.
+
+### Changed
+
+- Identity: the clade UUID in `CLADE.a2ml`/`CLAUDE.md` is now a UUID v7
+  (`01a0ed2d-28fe-70cb-8aa6-462024f85795`) per the estate UUID v7 standard
+  that the governance gate enforces from 2026-09-29. The previous UUIDv5 was
+  derived, never registered, and is dropped without alias. `just repo-init`
+  now mints v7 instead of deriving v5, and the stale mint template under
+  `build/templates/` (which `repo-init` deletes on a real mint) is removed.
+- Tests: `tests/workflows/foundation_ci_security_test.sh` now asserts CI
+  security properties (SPDX-first, lock coverage, single standards revision,
+  CodeQL posture, no actor gates, no Python) instead of snapshotting the exact
+  SHAs of #26; `foundation_ci_fixes_test.sh` is folded into it.
