@@ -164,8 +164,11 @@ no_python_sources() {
   [ -z "${py}" ] || { printf 'Python files are banned estate-wide:\n%s\n' "${py}"; return 1; }
   [ -f "${root}/scripts/strip-instruction-blocks.rs" ] \
     && [ -f "${root}/scripts/prune-dependabot-ecosystems.rs" ] \
-    && [ -x "${root}/scripts/rust-tool.sh" ] \
+    && [ -f "${root}/scripts/rust-tool.sh" ] \
     || { echo 'the Rust mint tools (and scripts/rust-tool.sh) must be present'; return 1; }
+  # rust-tool.sh is invoked as `bash scripts/rust-tool.sh` (repo-init.just), so
+  # its mode bit is not load-bearing and is not asserted: commits authored
+  # through GitHub's signing API cannot set modes.
 }
 check 'no Python in the tree; the mint tools are the Rust ports' no_python_sources
 
