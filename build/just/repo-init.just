@@ -120,15 +120,17 @@ repo-init archetype="":
     CURRENT_DATE=$(date +%Y-%m-%d)
     VERSION="0.1.0"
 
-    # --- Derive the repo's uuid --------------------------------------------
-    # THE UUID IS DERIVED, NOT ALLOCATED (gv-clade-index:
-    # docs/SPEC-clade-verisim-portal.adoc §Identity Model):
-    #     uuid = UUIDv5(namespace = URL, name = "github.com/<owner>/<name>")
-    # We know OWNER and REPO, so this is computable here and must never be
-    # guessed or copied. The owner segment is part of the derived name, so it is
-    # part of the identity — a repo hosted elsewhere derives a different uuid.
-    if command -v uuidgen >/dev/null 2>&1; then
-        REPO_UUID=$(uuidgen --sha1 --namespace @url --name "${FORGE}/${OWNER}/${REPO}")
+    # --- Mint the repo's uuid ----------------------------------------------
+    # UUID v7 (RFC 9562), per hyperpolymath/standards
+    # docs/UUID-V7-ESTATE-STANDARD.adoc: UUIDs are opaque and MUST NOT be
+    # derived from the repository name. The previous UUIDv5(URL) derivation is
+    # a legacy generation path the standard requires removed; the governance
+    # gate (scripts/check-uuid-v7.sh) rejects any non-v7 literal it produced.
+    # `uuidgen --time-v7` is util-linux >= 2.39; anything older leaves the
+    # value UNASSIGNED, which fails loudly downstream rather than minting a
+    # non-conformant id.
+    if command -v uuidgen >/dev/null 2>&1 && REPO_UUID=$(uuidgen --time-v7 2>/dev/null); then
+        :
     else
         REPO_UUID="UNASSIGNED"
     fi
@@ -286,7 +288,7 @@ repo-init archetype="":
     # token, so the sed pass above has nothing to match, yet every placeholder
     # gate greps exactly that shape — a repo with every real token correctly
     # substituted still trips its own gate. Rationale and measurements in
-    # scripts/strip-instruction-blocks.py.
+    # scripts/strip-instruction-blocks.rs.
     #
     # Runs AFTER substitution, so real tokens are already filled; only the
     # instructions go. Deliberately skipped for *-template-repo itself: the
@@ -295,7 +297,7 @@ repo-init archetype="":
     if [ "$REPO" != "${REPO%-template-repo}" ]; then
         echo "  instruction blocks: skipped (this IS a template repo)"
     else
-        python3 scripts/strip-instruction-blocks.py .
+        bash scripts/rust-tool.sh strip-instruction-blocks .
     fi
 
     # --- Dependabot ecosystem pass -----------------------------------------
@@ -304,13 +306,13 @@ repo-init archetype="":
     # declaring `pip` have no Python manifest, and each such entry fails on
     # every scheduled run. Prune on the ARCHETYPE rather than on file presence —
     # a freshly minted tree has no manifests yet, so presence would delete
-    # everything. Rationale in scripts/prune-dependabot-ecosystems.py.
+    # everything. Rationale in scripts/prune-dependabot-ecosystems.rs.
     keep_eco="github-actions"
     case "${ARCH_PRESET:-}" in *rust*|*cargo*) keep_eco="$keep_eco cargo" ;; esac
     case "${ARCH_PRESET:-}" in *node*|*js*|*ts*|*deno*|*bun*|*web*) keep_eco="$keep_eco npm" ;; esac
     case "${ARCH_PRESET:-}" in *elixir*|*mix*) keep_eco="$keep_eco mix" ;; esac
     case "${ARCH_PRESET:-}" in *python*|*py*) keep_eco="$keep_eco pip" ;; esac
-    python3 scripts/prune-dependabot-ecosystems.py .github/dependabot.yml $keep_eco
+    bash scripts/rust-tool.sh prune-dependabot-ecosystems .github/dependabot.yml $keep_eco
 
     # --- Self-name pass (ADR-0003) -----------------------------------------
     # The template's own name is written as a LITERAL, not as a placeholder
@@ -393,11 +395,11 @@ repo-init archetype="":
     # and rsr-template-how-to still carry it.
     #
     # build/templates/CLADE.a2ml.in has already had its brace tokens filled by
-    # the substitution loop above (including the UUID one, derived earlier).
+    # the substitution loop above (including the UUID one, minted earlier).
     # NB: literal double-brace tokens cannot be written in this recipe body —
     # just interpolates them, which is why LB/RB are built with printf above.
     # The split is the whole point:
-    #   DERIVABLE -> computed, never guessed  (uuid, owner, canonical-name)
+    #   MECHANICAL -> minted or computed, never guessed  (uuid, owner, canonical-name)
     #   JUDGEMENT -> left UNASSIGNED, fails loudly until a human chooses (clade)
     CLADE_IN="build/templates/CLADE.a2ml.in"
     CLADE_OUT=".machine_readable/descriptiles/CLADE.a2ml"
@@ -406,13 +408,12 @@ repo-init archetype="":
         cp "$CLADE_IN" "$CLADE_OUT"
         rm -rf build/templates          # template-only; not part of your repo
         if [ "$REPO_UUID" = "UNASSIGNED" ]; then
-            echo "  uuid:  UNASSIGNED — uuidgen not found."
-            echo "         Install util-linux (uuid-runtime), then run:"
-            echo "           uuidgen --sha1 --namespace @url --name \"${FORGE}/${OWNER}/${REPO}\""
-            echo "         and put the result in $CLADE_OUT."
+            echo "  uuid:  UNASSIGNED — no uuidgen with --time-v7 (util-linux >= 2.39)."
+            echo "         Mint one with any well-tested UUID v7 library and put it in"
+            echo "         $CLADE_OUT. Never derive it from the repo name."
         else
             echo "  uuid:  $REPO_UUID"
-            echo "         (uuid5 of ${FORGE}/${OWNER}/${REPO} — derived, recomputable, not invented)"
+            echo "         (UUID v7 — minted once, opaque, never recomputed)"
         fi
         echo "  clade: UNASSIGNED — a human must choose one of the 12."
         echo "         CLADE-003/006 FAIL until you do. That is deliberate:"
@@ -595,7 +596,7 @@ repo-init archetype="":
     # so would the test that guards the fix. All three are tooling, not
     # community-health documents, so a mention in them cannot mislead a reader
     # about what this project's Code of Conduct says.
-    LEFTOVER_BLOCKS=$(grep -rl 'TEMPLATE INSTRUCTIONS' . --exclude-dir=.git 2>/dev/null | grep -vE '^\./(scripts/strip-instruction-blocks\.py|build/just/repo-init\.just|tests/e2e/template_instantiation_test\.sh)$' || true)
+    LEFTOVER_BLOCKS=$(grep -rl 'TEMPLATE INSTRUCTIONS' . --exclude-dir=.git 2>/dev/null | grep -vE '^\./(scripts/strip-instruction-blocks\.rs|build/just/repo-init\.just|tests/e2e/template_instantiation_test\.sh)$' || true)
     if [ -n "$LEFTOVER_BLOCKS" ]; then
         echo ""
         echo "Un-deleted TEMPLATE INSTRUCTIONS block in:"
