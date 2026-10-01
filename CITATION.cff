@@ -6,6 +6,7 @@ version: "0.1.0-phase-a"
 authors:
   - family-names: "Jewell"
     given-names: "Jonathan D.A."
+    orcid: "https://orcid.org/0000-0002-3078-6652"
 repository-code: "https://github.com/metadatastician/sim-public-relations"
 license: MPL-2.0
 keywords:
