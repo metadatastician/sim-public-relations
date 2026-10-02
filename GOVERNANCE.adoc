@@ -80,7 +80,7 @@ This repository follows a **Benevolent Dictator (BDFL) Governance Model**:
 * Ownership transfer
 * Deprecation/archival
 
-**Process**: 
+**Process**:
 . Extended discussion (minimum 1 week)
 . Maintainer makes final decision
 . Document in CHANGELOG and governance docs
