@@ -110,7 +110,7 @@ jobs:
         run: |
           git cliff --output CHANGELOG.md
       - name: Upload updated CHANGELOG.md
-        uses: actions/upload-artifact@v7.0.1
+        uses: actions/upload-artifact@v7.0.2
         with:
           name: changelog
           path: CHANGELOG.md
@@ -133,7 +133,7 @@ jobs:
       #     name: release-artifacts
       #     path: artifacts/
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v3.0.3
+        uses: softprops/action-gh-release@v3.0.4
         with:
           body: ${{ needs.changelog.outputs.changelog }}
           draft: false
